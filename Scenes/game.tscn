@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://c4qbcniflu2cc" path="res://Shaders/sky/examples/sky.tscn" id="3_3dryh"]
 [ext_resource type="Texture2D" uid="uid://cmloud14w2tnp" path="res://Assets/Sand/Stylized_Sand_001_height.png" id="3_o5yvi"]
 [ext_resource type="PackedScene" uid="uid://bcj61yggf6xqi" path="res://Scenes/arms.tscn" id="3_wrm1d"]
-[ext_resource type="PackedScene" uid="uid://b35mxcc3d74di" path="res://Scenes/water_plane.tscn" id="4_3dryh"]
 [ext_resource type="Texture2D" uid="uid://df5eu1hy0xeet" path="res://Assets/Sand/Stylized_Sand_001_normal.jpg" id="4_rku1e"]
 [ext_resource type="Texture2D" uid="uid://e04cy1g5g45n" path="res://Assets/Sand/Stylized_Sand_001_roughness.jpg" id="5_rfjv2"]
 
@@ -40,6 +39,3 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4690142, -0.4577222)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.175, -0.225, 0.478)
 
 [node name="Sky" parent="." unique_id=248369870 instance=ExtResource("3_3dryh")]
-
-[node name="water" parent="." unique_id=1550669340 instance=ExtResource("4_3dryh")]
-transform = Transform3D(7.092804, 0, 0, 0, 1, 0, 0, 0, 7.092804, -0.16102028, 0.26783228, 0.17205524)

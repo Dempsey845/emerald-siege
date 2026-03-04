@@ -1,15 +1,33 @@
 [gd_scene format=3 uid="uid://bofe1qq0jx77b"]
 
+[ext_resource type="Texture2D" uid="uid://cvs308wte7xkl" path="res://Assets/Sand/Stylized_Sand_001_basecolor.jpg" id="1_h4fw4"]
+[ext_resource type="Texture2D" uid="uid://c0oaqpeuskohy" path="res://Assets/Sand/Stylized_Sand_001_ambientOcclusion.jpg" id="2_ldgsr"]
 [ext_resource type="PackedScene" uid="uid://cxcbd6rdvl7an" path="res://Scenes/player.tscn" id="2_qxrlw"]
 [ext_resource type="PackedScene" uid="uid://c4qbcniflu2cc" path="res://Shaders/sky/examples/sky.tscn" id="3_3dryh"]
+[ext_resource type="Texture2D" uid="uid://cmloud14w2tnp" path="res://Assets/Sand/Stylized_Sand_001_height.png" id="3_o5yvi"]
 [ext_resource type="PackedScene" uid="uid://bcj61yggf6xqi" path="res://Scenes/arms.tscn" id="3_wrm1d"]
+[ext_resource type="PackedScene" uid="uid://b35mxcc3d74di" path="res://Scenes/water_plane.tscn" id="4_3dryh"]
+[ext_resource type="Texture2D" uid="uid://df5eu1hy0xeet" path="res://Assets/Sand/Stylized_Sand_001_normal.jpg" id="4_rku1e"]
+[ext_resource type="Texture2D" uid="uid://e04cy1g5g45n" path="res://Assets/Sand/Stylized_Sand_001_roughness.jpg" id="5_rfjv2"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3dryh"]
+albedo_texture = ExtResource("1_h4fw4")
+roughness_texture = ExtResource("5_rfjv2")
+normal_enabled = true
+normal_texture = ExtResource("4_rku1e")
+ao_enabled = true
+ao_texture = ExtResource("2_ldgsr")
+heightmap_enabled = true
+heightmap_texture = ExtResource("3_o5yvi")
+uv1_scale = Vector3(3.56, 3.56, 3.56)
 
 [node name="Game" type="Node3D" unique_id=151187711]
 
 [node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=978063808]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.676117, 0, -0.26812744)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.676117, 0.1074698, -0.26812744)
 use_collision = true
 size = Vector3(13.34613, 1, 15.658081)
+material = SubResource("StandardMaterial3D_3dryh")
 
 [node name="Player" parent="." unique_id=684757255 node_paths=PackedStringArray("camera") instance=ExtResource("2_qxrlw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -22,3 +40,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4690142, -0.4577222)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.175, -0.225, 0.478)
 
 [node name="Sky" parent="." unique_id=248369870 instance=ExtResource("3_3dryh")]
+
+[node name="water" parent="." unique_id=1550669340 instance=ExtResource("4_3dryh")]
+transform = Transform3D(7.092804, 0, 0, 0, 1, 0, 0, 0, 7.092804, -0.16102028, 0.26783228, 0.17205524)

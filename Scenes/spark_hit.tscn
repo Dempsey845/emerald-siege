@@ -1,0 +1,66 @@
+[gd_scene format=3 uid="uid://b2bffsfu8848s"]
+
+[ext_resource type="Script" uid="uid://bbwqgk1bf4a21" path="res://Scripts/spark_hit.gd" id="1_l6kc7"]
+
+[sub_resource type="Gradient" id="Gradient_nb51f"]
+colors = PackedColorArray(0.8509804, 1, 0, 1, 0, 1, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_2txox"]
+gradient = SubResource("Gradient_nb51f")
+
+[sub_resource type="Curve" id="Curve_nnt18"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.13350783, 1), 0.0, 0.0, 0, 0, Vector2(0.5811518, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_uoc37"]
+curve = SubResource("Curve_nnt18")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ag0n2"]
+emission_shape = 1
+emission_sphere_radius = 0.5
+gravity = Vector3(4, 15, 0)
+linear_accel_min = -0.5000022
+linear_accel_max = 0.49999776
+scale_min = 0.01
+scale_max = 0.099999994
+scale_curve = SubResource("CurveTexture_uoc37")
+color_initial_ramp = SubResource("GradientTexture1D_2txox")
+hue_variation_min = -2.2351742e-08
+hue_variation_max = 0.019999977
+turbulence_enabled = true
+turbulence_noise_strength = 0.5
+turbulence_noise_scale = 1.0
+
+[sub_resource type="Curve" id="Curve_arjyu"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rh0km"]
+render_priority = 4
+cull_mode = 2
+vertex_color_use_as_albedo = true
+emission_enabled = true
+emission = Color(0, 1, 0, 1)
+emission_energy_multiplier = 10.0
+use_particle_trails = true
+
+[sub_resource type="RibbonTrailMesh" id="RibbonTrailMesh_85qyi"]
+material = SubResource("StandardMaterial3D_rh0km")
+sections = 2
+curve = SubResource("Curve_arjyu")
+
+[node name="SparkHit" type="GPUParticles3D" unique_id=68119247]
+transform = Transform3D(3.9999998, 0, 0, 0, 3.9999998, 0, 0, 1.4210855e-14, 4, 0, 0, 0)
+top_level = true
+cast_shadow = 0
+emitting = false
+amount = 32
+one_shot = true
+explosiveness = 1.0
+trail_enabled = true
+trail_lifetime = 0.05
+process_material = SubResource("ParticleProcessMaterial_ag0n2")
+draw_pass_1 = SubResource("RibbonTrailMesh_85qyi")
+script = ExtResource("1_l6kc7")
+
+[connection signal="finished" from="." to="." method="_on_finished"]

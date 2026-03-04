@@ -6,8 +6,10 @@ var mouse_sensitivity := 0.1
 var gravity := -9.8
 var jump_speed := 5.0
 
-@export var camera: Camera3D
 var rotation_x = 0
+
+@onready var camera: Camera3D = %Camera3D
+
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)

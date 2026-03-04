@@ -1,5 +1,6 @@
 [gd_scene format=4 uid="uid://bcj61yggf6xqi"]
 
+[ext_resource type="Material" uid="uid://bh8i3fluh2akr" path="res://Assets/Arms/ArmsToon.tres" id="1_nl810"]
 [ext_resource type="Material" uid="uid://oc6gh5gmuofm" path="res://Assets/Arms/Arms.tres" id="1_x4rdd"]
 [ext_resource type="Texture2D" uid="uid://c4hblxaxdqojw" path="res://Assets/Arms/FPS_Arms_glb_Items_tex.png" id="2_nl810"]
 [ext_resource type="Animation" uid="uid://cvqrj5t83ycod" path="res://Animations/Arms/pistol_idle.anim" id="3_in0qx"]
@@ -7200,12 +7201,14 @@ bones/37/rotation = Quaternion(0.7102778, 0.0005616192, -0.021403264, 0.7035958)
 bones/37/scale = Vector3(1, 1, 1)
 
 [node name="Arms" type="MeshInstance3D" parent="Arms_001/Skeleton3D" unique_id=1574653143]
+material_override = ExtResource("1_nl810")
 cast_shadow = 0
 mesh = SubResource("ArrayMesh_tg5nn")
 skin = SubResource("Skin_qxa2g")
 skeleton = NodePath("..")
 
 [node name="hand_1" type="MeshInstance3D" parent="Arms_001/Skeleton3D" unique_id=788847815]
+material_override = ExtResource("1_nl810")
 cast_shadow = 0
 mesh = SubResource("ArrayMesh_4kaxu")
 skin = SubResource("Skin_qxa2g")

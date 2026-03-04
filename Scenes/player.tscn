@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://cxcbd6rdvl7an"]
 
 [ext_resource type="Script" uid="uid://brsusgiauf3u6" path="res://Scripts/player.gd" id="1_v0iea"]
+[ext_resource type="Script" uid="uid://rqrjd8edwggi" path="res://Scripts/gun.gd" id="2_cvnsp"]
+[ext_resource type="PackedScene" uid="uid://bcj61yggf6xqi" path="res://Scenes/arms.tscn" id="3_6t5aa"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_f60y1"]
 
@@ -27,3 +29,16 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 color = Color(0.42352942, 0.42352942, 0.42352942, 0.3254902)
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1621509828]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4690142, -0.4577222)
+
+[node name="Arms" parent="Camera3D" unique_id=1419344825 instance=ExtResource("3_6t5aa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.175, -0.225, 0.478)
+
+[node name="Gun" type="Node3D" parent="." unique_id=50662015]
+script = ExtResource("2_cvnsp")
+
+[node name="FirePoint" type="Marker3D" parent="Gun" unique_id=418164785]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.18839431, 1.3428167, -1.5516311)

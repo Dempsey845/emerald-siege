@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://bofe1qq0jx77b"]
+
+[ext_resource type="PackedScene" uid="uid://cg3m5qnyxjev4" path="res://Shaders/sky/examples/sky.tscn" id="1_ebmjs"]
+[ext_resource type="PackedScene" uid="uid://cxcbd6rdvl7an" path="res://Scenes/player.tscn" id="2_qxrlw"]
+[ext_resource type="PackedScene" uid="uid://bcj61yggf6xqi" path="res://Scenes/arms.tscn" id="3_wrm1d"]
+
+[node name="Game" type="Node3D" unique_id=151187711]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=978063808]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.676117, 0, -0.26812744)
+use_collision = true
+size = Vector3(13.34613, 1, 15.658081)
+
+[node name="Sky" parent="." unique_id=1004902287 instance=ExtResource("1_ebmjs")]
+
+[node name="Player" parent="." unique_id=684757255 node_paths=PackedStringArray("camera") instance=ExtResource("2_qxrlw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+camera = NodePath("Camera3D")
+
+[node name="Camera3D" type="Camera3D" parent="Player" unique_id=1436577478]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4690142, -0.4577222)
+
+[node name="Arms" parent="Player/Camera3D" unique_id=1419344825 instance=ExtResource("3_wrm1d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.175, -0.225, 0.478)

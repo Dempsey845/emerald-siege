@@ -1,21 +1,24 @@
 extends CharacterBody3D
 
 const MOVE_SPEED := 5.0
+const ROTATION_SPEED := 6.0
 
 @export var target_node: Node3D
 
 @onready var navigation_agent: NavigationAgent3D = %NavigationAgent3D
 
 
-func _physics_process(_delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	if not navigation_agent.is_target_reachable():
 		return
 
 	var next_pos = navigation_agent.get_next_path_position()
 	var direction = global_position.direction_to(next_pos)
 
-	var desired_velocity = direction * MOVE_SPEED
+	var target_angle = atan2(direction.x, direction.z)
+	rotation.y = lerp_angle(rotation.y, target_angle, delta * ROTATION_SPEED)
 
+	var desired_velocity = direction * MOVE_SPEED
 	navigation_agent.set_velocity(desired_velocity)
 
 

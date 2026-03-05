@@ -27,6 +27,9 @@ shader_parameter/border_width = 0.01
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_287tu"]
 radius = 0.54345703
 
+[sub_resource type="BoxMesh" id="BoxMesh_1f0kj"]
+size = Vector3(0.6, 0.2, 0.2)
+
 [node name="Enemy" type="CharacterBody3D" unique_id=1319831896]
 script = ExtResource("1_1f0kj")
 
@@ -47,6 +50,10 @@ shape = SubResource("CapsuleShape3D_287tu")
 [node name="UpdateNavTimer" type="Timer" parent="." unique_id=1930983975]
 wait_time = 0.3
 autostart = true
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=857455810]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4998045, 0.46826762)
+mesh = SubResource("BoxMesh_1f0kj")
 
 [connection signal="velocity_computed" from="NavigationAgent3D" to="." method="_on_navigation_agent_3d_velocity_computed"]
 [connection signal="timeout" from="UpdateNavTimer" to="." method="_on_update_nav_timer_timeout"]

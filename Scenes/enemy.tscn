@@ -35,6 +35,7 @@ script = ExtResource("1_1f0kj")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=259066666]
 unique_name_in_owner = true
+target_desired_distance = 2.0
 avoidance_enabled = true
 radius = 0.7
 

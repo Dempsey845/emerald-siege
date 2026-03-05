@@ -32,7 +32,7 @@ func _process(delta: float) -> void:
 	time_since_last_ranged_attack += delta
 
 func attack_melee():
-	if attack_type != ATTACK_TYPE.Melee or attack_type != ATTACK_TYPE.MeleeAndRanged or not melee_cooldown_timer.is_stopped():
+	if attack_type != ATTACK_TYPE.Melee and attack_type != ATTACK_TYPE.MeleeAndRanged or not melee_cooldown_timer.is_stopped():
 		return
 	
 	if attack_type == ATTACK_TYPE.MeleeAndRanged and time_since_last_ranged_attack < min_time_between_attack_types:
@@ -43,7 +43,7 @@ func attack_melee():
 	melee_cooldown_timer.start()
 	
 func attack_ranged():
-	if attack_type != ATTACK_TYPE.Ranged or attack_type != ATTACK_TYPE.MeleeAndRanged:
+	if attack_type != ATTACK_TYPE.Ranged and attack_type != ATTACK_TYPE.MeleeAndRanged:
 		return
 		
 	if not ranged_cooldown_timer.is_stopped() or enemy.get_distance_to_target_node_sq() > ranged_attack_distance_sq:

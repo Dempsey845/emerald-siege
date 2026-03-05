@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://cq73urci8gd2y"]
+
+[ext_resource type="Script" uid="uid://foav3sxhbded" path="res://Scripts/enemy_prototype_gun.gd" id="1_t13r2"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_287tu"]
+size = Vector3(0.175, 0.18, 0.545)
+
+[sub_resource type="BoxMesh" id="BoxMesh_0830c"]
+size = Vector3(0.13, 0.28, 0.065)
+
+[node name="EnemyPrototypeGun" type="Node3D" unique_id=1745013349]
+script = ExtResource("1_t13r2")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1404367975]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.043761075, 0.33679128, 0.16764581)
+mesh = SubResource("BoxMesh_287tu")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=1476087776]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.043761075, 0.1277138, -0.0054516196)
+mesh = SubResource("BoxMesh_0830c")
+
+[node name="FirePoint" type="Marker3D" parent="." unique_id=1119250408]
+unique_name_in_owner = true
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -0.022636712, 0.34342587, 0.55568045)

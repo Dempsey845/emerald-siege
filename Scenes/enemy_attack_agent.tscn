@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://bbfcxiomq004e"]
+
+[ext_resource type="Script" uid="uid://ddop6hgaiera0" path="res://Scripts/enemy_attack_agent.gd" id="1_3dj5w"]
+
+[node name="EnemyAttackAgent" type="Node3D" unique_id=1658509399]
+script = ExtResource("1_3dj5w")
+
+[node name="RangedCooldownTimer" type="Timer" parent="." unique_id=1282378824]
+unique_name_in_owner = true
+one_shot = true
+
+[node name="MeleeCooldownTimer" type="Timer" parent="." unique_id=158647575]
+unique_name_in_owner = true
+one_shot = true

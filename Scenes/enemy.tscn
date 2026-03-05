@@ -1,35 +1,21 @@
 [gd_scene format=3 uid="uid://cig1lc1jr77yh"]
 
 [ext_resource type="Script" uid="uid://bv4u3827ya1ej" path="res://Scripts/enemy.gd" id="1_1f0kj"]
-[ext_resource type="Shader" uid="uid://hc4nj6lxtr66" path="res://addons/flexible_toon_shader/flexible_toon.gdshader" id="1_hghv2"]
-[ext_resource type="Script" uid="uid://ddop6hgaiera0" path="res://Scripts/enemy_attack_agent.gd" id="3_afpow"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_1f0kj"]
-render_priority = 0
-shader = ExtResource("1_hghv2")
-shader_parameter/albedo = Color(1, 0, 0, 1)
-shader_parameter/clamp_diffuse_to_max = false
-shader_parameter/cuts = 2
-shader_parameter/wrap = 0.0
-shader_parameter/steepness = 1.0
-shader_parameter/use_attenuation = true
-shader_parameter/use_specular = true
-shader_parameter/specular_strength = 1.0
-shader_parameter/specular_shininess = 16.0
-shader_parameter/use_rim = false
-shader_parameter/rim_width = 8.0
-shader_parameter/rim_color = Color(1, 1, 1, 1)
-shader_parameter/use_ramp = false
-shader_parameter/use_borders = false
-shader_parameter/border_width = 0.01
+[ext_resource type="Material" uid="uid://ddi4wwciwl6xs" path="res://Materials/Enemy/EnemyPrototypeMat.tres" id="2_afpow"]
+[ext_resource type="PackedScene" uid="uid://bbfcxiomq004e" path="res://Scenes/enemy_attack_agent.tscn" id="3_afpow"]
+[ext_resource type="PackedScene" uid="uid://cq73urci8gd2y" path="res://Scenes/enemy_prototype_gun.tscn" id="4_287tu"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_afpow"]
+material = ExtResource("2_afpow")
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_287tu"]
 radius = 0.54345703
 
 [sub_resource type="BoxMesh" id="BoxMesh_1f0kj"]
 size = Vector3(0.6, 0.2, 0.2)
+
+[sub_resource type="SphereMesh" id="SphereMesh_ghaa6"]
+material = ExtResource("2_afpow")
 
 [node name="Enemy" type="CharacterBody3D" unique_id=1319831896 node_paths=PackedStringArray("attack_agent")]
 script = ExtResource("1_1f0kj")
@@ -41,9 +27,8 @@ target_desired_distance = 2.0
 avoidance_enabled = true
 radius = 0.7
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=229651913]
+[node name="PrototypeCapsule" type="MeshInstance3D" parent="." unique_id=229651913]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-material_override = SubResource("ShaderMaterial_1f0kj")
 mesh = SubResource("CapsuleMesh_afpow")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=963748247]
@@ -58,16 +43,19 @@ autostart = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4998045, 0.46826762)
 mesh = SubResource("BoxMesh_1f0kj")
 
-[node name="EnemyAttackAgent" type="Node3D" parent="." unique_id=310575918]
-script = ExtResource("3_afpow")
+[node name="EnemyAttackAgent" parent="." unique_id=1658509399 instance=ExtResource("3_afpow")]
+attack_type = 1
 
-[node name="RangedCooldownTimer" type="Timer" parent="EnemyAttackAgent" unique_id=1323362921]
-unique_name_in_owner = true
-one_shot = true
+[node name="EnemyHand" type="Node3D" parent="." unique_id=1039866114]
+transform = Transform3D(0.9993556, 0, -0.035893712, 0, 1, 0, 0.035893712, 0, 0.9993556, 0.43042693, 0.9077932, 0.2990657)
 
-[node name="MeleeCooldownTimer" type="Timer" parent="EnemyAttackAgent" unique_id=194143578]
-unique_name_in_owner = true
-one_shot = true
+[node name="EnemyPrototypeGun" parent="EnemyHand" unique_id=1745013349 node_paths=PackedStringArray("enemy_attack_agent") instance=ExtResource("4_287tu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.047293097, -0.025403202, 0.40983683)
+enemy_attack_agent = NodePath("../../EnemyAttackAgent")
+
+[node name="PrototypeHand" type="MeshInstance3D" parent="EnemyHand" unique_id=1185223950]
+transform = Transform3D(0.23381662, 0, 0, 0, 0.23381662, 0, 0, 0, 0.43489164, -0.027072519, 0.0085068345, 0.19364208)
+mesh = SubResource("SphereMesh_ghaa6")
 
 [connection signal="velocity_computed" from="NavigationAgent3D" to="." method="_on_navigation_agent_3d_velocity_computed"]
 [connection signal="timeout" from="UpdateNavTimer" to="." method="_on_update_nav_timer_timeout"]

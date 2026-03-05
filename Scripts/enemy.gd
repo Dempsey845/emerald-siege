@@ -40,6 +40,7 @@ func get_distance_to_target_node_sq() -> float:
 	
 	return global_position.distance_squared_to(target_node.global_position)
 
+
 func _look_at_target_node(delta: float):
 	var look_dir = global_position.direction_to(target_node.global_position)
 	if look_dir.length() > 0.01:

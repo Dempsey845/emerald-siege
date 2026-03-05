@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bv4u3827ya1ej" path="res://Scripts/enemy.gd" id="1_1f0kj"]
 [ext_resource type="Shader" uid="uid://hc4nj6lxtr66" path="res://addons/flexible_toon_shader/flexible_toon.gdshader" id="1_hghv2"]
+[ext_resource type="Script" uid="uid://ddop6hgaiera0" path="res://Scripts/enemy_attack_agent.gd" id="3_afpow"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1f0kj"]
 render_priority = 0
@@ -30,8 +31,9 @@ radius = 0.54345703
 [sub_resource type="BoxMesh" id="BoxMesh_1f0kj"]
 size = Vector3(0.6, 0.2, 0.2)
 
-[node name="Enemy" type="CharacterBody3D" unique_id=1319831896]
+[node name="Enemy" type="CharacterBody3D" unique_id=1319831896 node_paths=PackedStringArray("attack_agent")]
 script = ExtResource("1_1f0kj")
+attack_agent = NodePath("EnemyAttackAgent")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=259066666]
 unique_name_in_owner = true
@@ -55,6 +57,17 @@ autostart = true
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=857455810]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4998045, 0.46826762)
 mesh = SubResource("BoxMesh_1f0kj")
+
+[node name="EnemyAttackAgent" type="Node3D" parent="." unique_id=310575918]
+script = ExtResource("3_afpow")
+
+[node name="RangedCooldownTimer" type="Timer" parent="EnemyAttackAgent" unique_id=1323362921]
+unique_name_in_owner = true
+one_shot = true
+
+[node name="MeleeCooldownTimer" type="Timer" parent="EnemyAttackAgent" unique_id=194143578]
+unique_name_in_owner = true
+one_shot = true
 
 [connection signal="velocity_computed" from="NavigationAgent3D" to="." method="_on_navigation_agent_3d_velocity_computed"]
 [connection signal="timeout" from="UpdateNavTimer" to="." method="_on_update_nav_timer_timeout"]

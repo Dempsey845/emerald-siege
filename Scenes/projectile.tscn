@@ -72,6 +72,8 @@ radius = 0.62541074
 [node name="Projectile" type="Area3D" unique_id=223916411]
 transform = Transform3D(-1, 0, 1.509958e-07, 0, 1, 0, -1.509958e-07, 0, -1, 0, 0, 0)
 top_level = true
+collision_layer = 0
+collision_mask = 11
 collision_priority = 2.0
 script = ExtResource("1_d4467")
 

@@ -4,9 +4,17 @@ const PROJECTILE = preload("res://Scenes/projectile.tscn")
 
 @onready var fire_point: Marker3D = $FirePoint
 
+@onready var arms: Arms = $"../../../.."
+
+var can_shoot = true
+
 func _process(_delta: float) -> void:
-	if Input.is_action_just_pressed("shoot"):
+	if Input.is_action_just_pressed("shoot") and can_shoot:
 		shoot_projectile()
+		arms.fire()
+		can_shoot = false
+		await arms.animation_player.animation_finished
+		can_shoot = true
 
 func shoot_projectile():
 	var projectile = PROJECTILE.instantiate()

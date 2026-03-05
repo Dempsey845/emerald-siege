@@ -33,6 +33,8 @@ func _on_body_entered(body: Node3D) -> void:
 		
 		sand_hit.global_position = global_position
 		projectile_decal.global_position = global_position
+	elif body.is_in_group("Enemy"):
+		body.take_damage(1)
 
 	
 	shrink_and_remove()

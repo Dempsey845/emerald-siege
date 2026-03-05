@@ -1,11 +1,15 @@
 class_name Enemy extends CharacterBody3D
 
+signal damage_taken
+
 const MOVE_SPEED := 5.0
 const ROTATION_SPEED := 6.0
 
 @export var target_node: Node3D
 @export var attack_agent: AttackAgent
 @onready var navigation_agent: NavigationAgent3D = %NavigationAgent3D
+
+var health := 3
 
 func _physics_process(delta: float) -> void:
 	if not target_node:
@@ -40,7 +44,6 @@ func get_distance_to_target_node_sq() -> float:
 	
 	return global_position.distance_squared_to(target_node.global_position)
 
-
 func _look_at_target_node(delta: float):
 	var look_dir = global_position.direction_to(target_node.global_position)
 	if look_dir.length() > 0.01:
@@ -61,3 +64,7 @@ func _on_update_nav_timer_timeout() -> void:
 		return
 
 	navigation_agent.target_position = target_node.global_position
+
+func take_damage(damage: int):
+	health -= damage
+	damage_taken.emit()

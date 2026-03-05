@@ -1,12 +1,20 @@
 [gd_scene format=3 uid="uid://cig1lc1jr77yh"]
 
 [ext_resource type="Script" uid="uid://bv4u3827ya1ej" path="res://Scripts/enemy.gd" id="1_1f0kj"]
+[ext_resource type="Shader" uid="uid://b5ae0k7fqomik" path="res://Shaders/hit.gdshader" id="2_0830c"]
 [ext_resource type="Material" uid="uid://ddi4wwciwl6xs" path="res://Materials/Enemy/EnemyPrototypeMat.tres" id="2_afpow"]
+[ext_resource type="PackedScene" uid="uid://vnagd5uxpa3k" path="res://Scenes/enemy_prototype_capsule.tscn" id="2_ghaa6"]
 [ext_resource type="PackedScene" uid="uid://bbfcxiomq004e" path="res://Scenes/enemy_attack_agent.tscn" id="3_afpow"]
 [ext_resource type="PackedScene" uid="uid://cq73urci8gd2y" path="res://Scenes/enemy_prototype_gun.tscn" id="4_287tu"]
 
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_afpow"]
-material = ExtResource("2_afpow")
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1dp5w"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("2_0830c")
+shader_parameter/hit_color = Color(0.16828394, 0.7162379, 0.46917444, 0.69411767)
+shader_parameter/pulse_speed = 15.0
+shader_parameter/duration = 1.0000000475
+shader_parameter/amplitude = 0.050000002375
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_287tu"]
 radius = 0.54345703
@@ -17,7 +25,7 @@ size = Vector3(0.6, 0.2, 0.2)
 [sub_resource type="SphereMesh" id="SphereMesh_ghaa6"]
 material = ExtResource("2_afpow")
 
-[node name="Enemy" type="CharacterBody3D" unique_id=1319831896 node_paths=PackedStringArray("attack_agent")]
+[node name="Enemy" type="CharacterBody3D" unique_id=1319831896 node_paths=PackedStringArray("attack_agent") groups=["Enemy"]]
 script = ExtResource("1_1f0kj")
 attack_agent = NodePath("EnemyAttackAgent")
 
@@ -27,9 +35,10 @@ target_desired_distance = 2.0
 avoidance_enabled = true
 radius = 0.7
 
-[node name="PrototypeCapsule" type="MeshInstance3D" parent="." unique_id=229651913]
+[node name="EnemyPrototypeCapsule" parent="." unique_id=804098014 instance=ExtResource("2_ghaa6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-mesh = SubResource("CapsuleMesh_afpow")
+material_overlay = SubResource("ShaderMaterial_1dp5w")
+hit_duration = 1.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=963748247]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)

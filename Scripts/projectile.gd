@@ -1,12 +1,20 @@
-extends Area3D
+class_name Projectile extends Area3D
 
 const SPEED := 35.0
 
-const SPARK_HIT = preload("res://Scenes/spark_hit.tscn")
+@export var projectile_hit_scene: Resource
 const SAND_HIT = preload("res://Scenes/sand_hit.tscn")
 const PROJECTILE_DECAL = preload("res://Scenes/projectile_decal.tscn")
 
 var has_hit := false
+
+enum SHOT_FROM
+{
+	Player,
+	Enemy
+}
+
+@export var shot_from: SHOT_FROM
 
 func _process(delta: float) -> void:
 	if has_hit:
@@ -20,9 +28,10 @@ func _on_body_entered(body: Node3D) -> void:
 		
 	has_hit = true
 	
-	var spark_hit = SPARK_HIT.instantiate()
-	get_parent().add_child(spark_hit)
-	spark_hit.global_position = global_position
+	if projectile_hit_scene:
+		var projectile_hit = projectile_hit_scene.instantiate()
+		get_parent().add_child(projectile_hit)
+		projectile_hit.global_position = global_position
 	
 	if body.is_in_group("Terrain"):
 		var sand_hit = SAND_HIT.instantiate()
@@ -33,7 +42,7 @@ func _on_body_entered(body: Node3D) -> void:
 		
 		sand_hit.global_position = global_position
 		projectile_decal.global_position = global_position
-	elif body.is_in_group("Enemy"):
+	elif (body.is_in_group("Enemy") and shot_from == SHOT_FROM.Player) or (body.is_in_group("Player") and shot_from == SHOT_FROM.Enemy):
 		body.take_damage(1)
 
 	

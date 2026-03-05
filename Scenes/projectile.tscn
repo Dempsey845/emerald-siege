@@ -1,70 +1,7 @@
 [gd_scene format=3 uid="uid://cdftjehuqy2kt"]
 
 [ext_resource type="Script" uid="uid://c4isvg5tuymu1" path="res://Scripts/projectile.gd" id="1_d4467"]
-[ext_resource type="Material" uid="uid://c141h05s7rhxy" path="res://Assets/Fire_Project/Green.tres" id="1_tl4hk"]
-[ext_resource type="ArrayMesh" uid="uid://b20m5hrabwl7r" path="res://Assets/Fire_Project/Tear_Model.tres" id="2_d4467"]
-[ext_resource type="Shader" uid="uid://ujjc6blyr8of" path="res://addons/flexible_toon_shader/hatch_toon.gdshader" id="3_e1077"]
-
-[sub_resource type="Gradient" id="Gradient_nb51f"]
-colors = PackedColorArray(0.8509804, 1, 0, 1, 0, 1, 0, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_2txox"]
-gradient = SubResource("Gradient_nb51f")
-
-[sub_resource type="Curve" id="Curve_nnt18"]
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.13350783, 1), 0.0, 0.0, 0, 0, Vector2(0.5811518, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
-point_count = 4
-
-[sub_resource type="CurveTexture" id="CurveTexture_uoc37"]
-curve = SubResource("Curve_nnt18")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ewbju"]
-emission_shape = 1
-emission_sphere_radius = 0.5
-gravity = Vector3(2, 4, 0)
-linear_accel_min = -0.5000022
-linear_accel_max = 0.49999776
-scale_min = 0.01
-scale_max = 0.049999997
-scale_curve = SubResource("CurveTexture_uoc37")
-color_initial_ramp = SubResource("GradientTexture1D_2txox")
-hue_variation_min = -2.2351742e-08
-hue_variation_max = 0.019999977
-turbulence_enabled = true
-turbulence_noise_strength = 0.5
-turbulence_noise_scale = 1.0
-
-[sub_resource type="Curve" id="Curve_arjyu"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
-point_count = 2
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rh0km"]
-render_priority = 4
-cull_mode = 2
-vertex_color_use_as_albedo = true
-emission_enabled = true
-emission = Color(0, 1, 0, 1)
-emission_energy_multiplier = 10.0
-use_particle_trails = true
-
-[sub_resource type="RibbonTrailMesh" id="RibbonTrailMesh_85qyi"]
-material = SubResource("StandardMaterial3D_rh0km")
-sections = 2
-curve = SubResource("Curve_arjyu")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_iivbl"]
-render_priority = 0
-shader = ExtResource("3_e1077")
-shader_parameter/albedo = Color(0, 1, 0, 1)
-shader_parameter/cuts = 2
-shader_parameter/wrap = 0.0
-shader_parameter/steepness = 0.0
-shader_parameter/use_attenuation = true
-shader_parameter/use_rim = false
-shader_parameter/rim_width = 8.0
-shader_parameter/rim_color = Color(1, 1, 1, 1)
-shader_parameter/hatch_scale = 2.0
-shader_parameter/use_triplanar = true
+[ext_resource type="PackedScene" uid="uid://b2bffsfu8848s" path="res://Scenes/spark_hit.tscn" id="2_e1077"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_7nbq1"]
 radius = 0.62541074
@@ -76,31 +13,7 @@ collision_layer = 0
 collision_mask = 11
 collision_priority = 2.0
 script = ExtResource("1_d4467")
-
-[node name="Fire_Drop3" type="MeshInstance3D" parent="." unique_id=712468962]
-transform = Transform3D(-0.18155392, 0, 6.4500913e-16, 0, -7.935973e-09, -0.18155393, 0, -0.18155392, 7.9359745e-09, 0, 0, 0)
-material_override = ExtResource("1_tl4hk")
-cast_shadow = 0
-mesh = ExtResource("2_d4467")
-
-[node name="Light" type="OmniLight3D" parent="Fire_Drop3" unique_id=306110930]
-light_color = Color(0, 0.7607843, 0, 1)
-light_energy = 2.0
-
-[node name="Sparks" type="GPUParticles3D" parent="Fire_Drop3" unique_id=432087285]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)
-cast_shadow = 0
-amount = 64
-lifetime = 0.5
-trail_enabled = true
-trail_lifetime = 0.05
-process_material = SubResource("ParticleProcessMaterial_ewbju")
-draw_pass_1 = SubResource("RibbonTrailMesh_85qyi")
-
-[node name="CSGSphere3D" type="CSGSphere3D" parent="Fire_Drop3" unique_id=2075256392]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -0.011701584, 0.25130796, 0)
-material_override = SubResource("ShaderMaterial_iivbl")
-radial_segments = 16
+projectile_hit_scene = ExtResource("2_e1077")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1758556830]
 transform = Transform3D(0.7262157, 0, 0, 0, 0.7262157, 0, 0, 0, 0.7262157, -7.3185263e-10, 0, -0.004846841)
@@ -111,10 +24,6 @@ unique_name_in_owner = true
 wait_time = 3.0
 one_shot = true
 autostart = true
-
-[node name="RayCast3D" type="RayCast3D" parent="." unique_id=1024232152]
-unique_name_in_owner = true
-target_position = Vector3(0, 0, 1)
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="LifeTimer" to="." method="_on_life_timer_timeout"]

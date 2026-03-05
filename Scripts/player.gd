@@ -30,6 +30,9 @@ var was_on_floor := true
 
 var arms_default_position := Vector3.ZERO
 
+# Health
+var health = 3
+
 @onready var camera: Camera3D = %Camera3D
 @onready var arms: Node3D = %Arms
 
@@ -168,3 +171,7 @@ func apply_rotation_sway(delta):
 	)
 
 	arms.rotation = arms.rotation.lerp(target_rotation, delta * 8.0)
+
+func take_damage(damage: int = 1):
+	health -= damage
+	%HitVignette.show_hit(1)

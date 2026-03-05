@@ -2,7 +2,7 @@ class_name Enemy extends CharacterBody3D
 
 signal damage_taken
 
-const MOVE_SPEED := 5.0
+const MOVE_SPEED := 7.0
 const ROTATION_SPEED := 6.0
 
 @export var target_node: Node3D
@@ -36,6 +36,7 @@ func _physics_process(delta: float) -> void:
 	
 	if attack_agent:
 		attack_agent.attack_ranged()
+		attack_agent.attack_melee()
 
 func get_distance_to_target_node_sq() -> float:
 	if not target_node:

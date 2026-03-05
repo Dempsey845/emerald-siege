@@ -182,7 +182,7 @@ mesh = ExtResource("3_6wtt3")
 
 [node name="Light" type="OmniLight3D" parent="Fire_Drop" index="0" unique_id=1125977464]
 light_color = Color(1, 0.54509807, 0, 1)
-light_energy = 2.0
+light_energy = 0.6
 
 [node name="Sparks" type="GPUParticles3D" parent="Fire_Drop" index="1" unique_id=1500840219]
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)

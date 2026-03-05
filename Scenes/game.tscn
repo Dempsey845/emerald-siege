@@ -44,11 +44,11 @@ subdivide_depth = 100
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_v158k"]
 material = ExtResource("6_v158k")
 
-[sub_resource type="Gradient" id="Gradient_h4fw4"]
+[sub_resource type="Gradient" id="Gradient_v158k"]
 offsets = PackedFloat32Array(0.2, 1)
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_ldgsr"]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_h4fw4"]
 noise_type = 2
 frequency = 0.03
 cellular_jitter = 3.0
@@ -60,15 +60,15 @@ domain_warp_fractal_type = 2
 domain_warp_fractal_lacunarity = 1.5
 domain_warp_fractal_gain = 1.0
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_o5yvi"]
-noise = SubResource("FastNoiseLite_ldgsr")
-color_ramp = SubResource("Gradient_h4fw4")
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ldgsr"]
+noise = SubResource("FastNoiseLite_h4fw4")
+color_ramp = SubResource("Gradient_v158k")
 seamless = true
 
 [sub_resource type="Terrain3DMaterial" id="Terrain3DMaterial_rku1e"]
 _shader_parameters = {
 &"bias_distance": 512.0,
-&"blend_sharpness": 0.0,
+&"blend_sharpness": 0.5,
 &"depth_blur": 0.0,
 &"enable_macro_variation": true,
 &"enable_projection": true,
@@ -81,7 +81,7 @@ _shader_parameters = {
 &"noise1_offset": Vector2(0.5, 0.5),
 &"noise1_scale": 0.04,
 &"noise2_scale": 0.076,
-&"noise_texture": SubResource("NoiseTexture2D_o5yvi"),
+&"noise_texture": SubResource("NoiseTexture2D_ldgsr"),
 &"projection_threshold": 0.8
 }
 world_background = 0
@@ -103,13 +103,20 @@ normal_texture = ExtResource("9_ldgsr")
 mesh_list = Array[Terrain3DMeshAsset]([SubResource("Terrain3DMeshAsset_rfjv2")])
 texture_list = Array[Terrain3DTextureAsset]([SubResource("Terrain3DTextureAsset_nb51f")])
 
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_h4fw4"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ldgsr"]
+radius = 0.54345703
+
 [node name="Game" type="Node3D" unique_id=151187711]
 
-[node name="Player" parent="." unique_id=684757255 node_paths=PackedStringArray("camera") instance=ExtResource("2_qxrlw")]
+[node name="Player" parent="." unique_id=684757255 instance=ExtResource("2_qxrlw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.6200383, 20.194138)
-camera = NodePath("")
 
 [node name="Sky" parent="." unique_id=248369870 instance=ExtResource("3_3dryh")]
+
+[node name="DirectionalLight3D" parent="Sky" index="1" unique_id=707745168]
+light_energy = 0.6
 
 [node name="Water" type="MeshInstance3D" parent="." unique_id=723601932]
 transform = Transform3D(53.07, 0, 0, 0, 53.07, 0, 0, 0, 53.07, 0, 0.39557981, 0)
@@ -125,3 +132,20 @@ material = SubResource("Terrain3DMaterial_rku1e")
 assets = SubResource("Terrain3DAssets_nnt18")
 top_level = true
 metadata/_edit_lock_ = true
+
+[node name="GPUParticlesCollisionHeightField3D" type="GPUParticlesCollisionHeightField3D" parent="." unique_id=1490235619]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, -0.092321634, -12)
+size = Vector3(105, 6.82605, 100)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1016493224]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.179837, 2.9484413, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D" unique_id=36617660]
+mesh = SubResource("CapsuleMesh_h4fw4")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=1688077012]
+shape = SubResource("CapsuleShape3D_ldgsr")
+
+[editable path="Player"]
+[editable path="Player/Camera3D/Arms"]
+[editable path="Sky"]

@@ -5,12 +5,13 @@
 [ext_resource type="PackedScene" uid="uid://bcj61yggf6xqi" path="res://Scenes/arms.tscn" id="3_6t5aa"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_f60y1"]
+height = 3.305664
 
 [node name="Player" type="CharacterBody3D" unique_id=684757255]
 script = ExtResource("1_v0iea")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=809645334]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.97509754, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6279296, 0)
 shape = SubResource("CapsuleShape3D_f60y1")
 
 [node name="PlayerCanvasLayer" type="CanvasLayer" parent="." unique_id=680215882]
@@ -32,13 +33,16 @@ color = Color(0.42352942, 0.42352942, 0.42352942, 0.3254902)
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1621509828]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4690142, -0.4577222)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.3437471, -0.4577222)
 
 [node name="Arms" parent="Camera3D" unique_id=1419344825 instance=ExtResource("3_6t5aa")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.175, -0.225, 0.478)
 
-[node name="Gun" type="Node3D" parent="." unique_id=50662015]
+[node name="Gun" type="Node3D" parent="Camera3D/Arms/Arms_001/Skeleton3D/hand_1" parent_id_path=PackedInt32Array(1419344825, 788847815) index="0" unique_id=50662015]
+transform = Transform3D(-1.0000001, 0, -1.4901167e-08, 0, 1, 0, 1.4901167e-08, 0, -1.0000001, -0.17500001, -1.2440141, 0.020277802)
 script = ExtResource("2_cvnsp")
 
-[node name="FirePoint" type="Marker3D" parent="Gun" unique_id=418164785]
+[node name="FirePoint" type="Marker3D" parent="Camera3D/Arms/Arms_001/Skeleton3D/hand_1/Gun" unique_id=418164785]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.18839431, 1.3428167, -1.5516311)
+
+[editable path="Camera3D/Arms"]

@@ -67,15 +67,16 @@ shader_parameter/hatch_scale = 2.0
 shader_parameter/use_triplanar = true
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_7nbq1"]
-radius = 0.33546647
+radius = 0.62541074
 
 [node name="Projectile" type="Area3D" unique_id=223916411]
-transform = Transform3D(-1, 0, 5.9604645e-08, 0, 1, 0, -5.9604645e-08, 0, -1, 0, 0, 0)
+transform = Transform3D(-1, 0, 1.509958e-07, 0, 1, 0, -1.509958e-07, 0, -1, 0, 0, 0)
 top_level = true
+collision_priority = 2.0
 script = ExtResource("1_d4467")
 
 [node name="Fire_Drop3" type="MeshInstance3D" parent="." unique_id=712468962]
-transform = Transform3D(-0.24999999, 0, 8.881784e-16, 0, -1.0927845e-08, -0.25, 0, -0.24999999, 1.0927847e-08, 0, 0, 0)
+transform = Transform3D(-0.18155392, 0, 6.4500913e-16, 0, -7.935973e-09, -0.18155393, 0, -0.18155392, 7.9359745e-09, 0, 0, 0)
 material_override = ExtResource("1_tl4hk")
 cast_shadow = 0
 mesh = ExtResource("2_d4467")
@@ -100,6 +101,18 @@ material_override = SubResource("ShaderMaterial_iivbl")
 radial_segments = 16
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1758556830]
+transform = Transform3D(0.7262157, 0, 0, 0, 0.7262157, 0, 0, 0, 0.7262157, -7.3185263e-10, 0, -0.004846841)
 shape = SubResource("SphereShape3D_7nbq1")
 
+[node name="LifeTimer" type="Timer" parent="." unique_id=1959618805]
+unique_name_in_owner = true
+wait_time = 3.0
+one_shot = true
+autostart = true
+
+[node name="RayCast3D" type="RayCast3D" parent="." unique_id=1024232152]
+unique_name_in_owner = true
+target_position = Vector3(0, 0, 1)
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="LifeTimer" to="." method="_on_life_timer_timeout"]

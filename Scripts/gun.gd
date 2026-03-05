@@ -2,8 +2,6 @@ extends Node3D
 
 const PROJECTILE = preload("res://Scenes/projectile.tscn")
 
-@onready var camera: Camera3D = $"../Camera3D"
-
 @onready var fire_point: Marker3D = $FirePoint
 
 func _process(_delta: float) -> void:
@@ -15,4 +13,6 @@ func shoot_projectile():
 	add_child(projectile)
 	
 	projectile.global_position = fire_point.global_position
-	projectile.global_basis = camera.global_basis
+	projectile.global_basis = fire_point.global_basis
+	
+	

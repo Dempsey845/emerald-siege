@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://can51xflmwu8s"]
+
+[ext_resource type="Script" uid="uid://0ca8mwlifwir" path="res://Scripts/sand_hit.gd" id="1_wg7ey"]
+
+[sub_resource type="Curve" id="Curve_dw7ly"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.09574469, 1), 0.0, 0.0, 0, 0, Vector2(0.64361703, 0.8988764), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_wg7ey"]
+curve = SubResource("Curve_dw7ly")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_rq8bq"]
+emission_shape = 1
+emission_sphere_radius = 0.1
+direction = Vector3(1, 1, 0)
+spread = 180.0
+initial_velocity_max = 10.0
+scale_min = 0.049999997
+scale_max = 0.19999999
+scale_curve = SubResource("CurveTexture_wg7ey")
+collision_mode = 1
+collision_friction = 0.0
+collision_bounce = 0.5
+collision_use_scale = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dw7ly"]
+albedo_color = Color(0.9353112, 0.5721861, 0.34050918, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_e3544"]
+material = SubResource("StandardMaterial3D_dw7ly")
+height = 1.2
+
+[node name="SandHit" type="Node3D" unique_id=2065658334]
+script = ExtResource("1_wg7ey")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="." unique_id=1712042320]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.17069614, 0)
+emitting = false
+one_shot = true
+explosiveness = 1.0
+randomness = 1.0
+process_material = SubResource("ParticleProcessMaterial_rq8bq")
+draw_pass_1 = SubResource("SphereMesh_e3544")
+
+[connection signal="finished" from="GPUParticles3D" to="." method="_on_gpu_particles_3d_finished"]

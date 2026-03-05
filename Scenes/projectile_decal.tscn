@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://ctu6wly3ovh7a"]
+
+[ext_resource type="Texture2D" uid="uid://cp65v8rrwrkg2" path="res://Assets/mark.png" id="1_wwb8j"]
+[ext_resource type="Script" uid="uid://ckqhlqfnyim0y" path="res://Scripts/projectile_decal.gd" id="2_c0m7k"]
+
+[node name="ProjectileDecal" type="Decal" unique_id=1749258491]
+top_level = true
+size = Vector3(1, 1, 1)
+texture_albedo = ExtResource("1_wwb8j")
+albedo_mix = 0.69
+script = ExtResource("2_c0m7k")

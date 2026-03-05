@@ -100,6 +100,19 @@ metadata/_edit_lock_ = true
 [node name="Enemies" type="Node3D" parent="NavigationRegion3D" unique_id=712949286]
 
 [node name="Enemy" parent="NavigationRegion3D/Enemies" unique_id=1319831896 node_paths=PackedStringArray("target_node") instance=ExtResource("8_v158k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.673659, 3.7220945, 0)
+target_node = NodePath("../../../Player")
+
+[node name="Enemy2" parent="NavigationRegion3D/Enemies" unique_id=813162185 node_paths=PackedStringArray("target_node") instance=ExtResource("8_v158k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.673659, 3.7220945, -6)
+target_node = NodePath("../../../Player")
+
+[node name="Enemy3" parent="NavigationRegion3D/Enemies" unique_id=393566151 node_paths=PackedStringArray("target_node") instance=ExtResource("8_v158k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.673659, 3.7220945, -10)
+target_node = NodePath("../../../Player")
+
+[node name="Enemy4" parent="NavigationRegion3D/Enemies" unique_id=1041453701 node_paths=PackedStringArray("target_node") instance=ExtResource("8_v158k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.673659, 3.7220945, -16)
 target_node = NodePath("../../../Player")
 
 [node name="GPUParticlesCollisionHeightField3D" type="GPUParticlesCollisionHeightField3D" parent="." unique_id=1490235619]

@@ -25,11 +25,11 @@ seamless_blend_skirt = 0.423
 render_priority = 0
 shader = ExtResource("9_h4fw4")
 shader_parameter/surface_color = Color(0.62849283, 0.88105536, 0.99999994, 1)
-shader_parameter/depth_color = Color(0.2056576, 0.4617803, 1, 1)
+shader_parameter/depth_color = Color(0.37597054, 0.58637077, 1, 1)
 shader_parameter/_waves = ExtResource("7_1l0tm")
 shader_parameter/_waves2 = SubResource("NoiseTexture2D_i6g32")
 shader_parameter/beer_factor = 0.6270000297825
-shader_parameter/foam_size = 0.350000016625
+shader_parameter/foam_size = 0.5010000237975
 shader_parameter/waves_space = 1.0
 shader_parameter/waves_density = 0.2000000095
 shader_parameter/waves_size = 1.0
@@ -78,7 +78,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.6200383, 20.194138)
 light_energy = 0.6
 
 [node name="Water" type="MeshInstance3D" parent="." unique_id=723601932]
-transform = Transform3D(53.07, 0, 0, 0, 53.07, 0, 0, 0, 53.07, 0, 0.39557981, 0)
+transform = Transform3D(53.07, 0, 0, 0, 53.07, 0, 0, 0, 53.07, -3.0120957, 1.0937052, 6.332214)
 mesh = SubResource("PlaneMesh_1l0tm")
 
 [node name="Capsule" type="MeshInstance3D" parent="." unique_id=490529191]

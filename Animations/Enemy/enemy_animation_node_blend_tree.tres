@@ -1,5 +1,8 @@
 [gd_resource type="AnimationNodeBlendTree" format=3 uid="uid://c3a3srw6niljt"]
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_70yeh"]
+animation = &"Custom/idle"
+
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_m2qo5"]
 animation = &"Custom/axe_attack"
 
@@ -31,7 +34,7 @@ animation = &"Custom/idle"
 animation = &"Custom/shoot_attack"
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_7y1rf"]
-graph_offset = Vector2(-402.6105, 10.529785)
+graph_offset = Vector2(-399.2823, 109.66344)
 nodes/output/position = Vector2(400, 240)
 nodes/Idle/node = SubResource("AnimationNodeAnimation_6ufe4")
 nodes/Idle/position = Vector2(-140, 180)
@@ -44,6 +47,8 @@ node_connections = [&"output", 0, &"Blend", &"Blend", 0, &"Idle", &"Blend", 1, &
 [sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_eigow"]
 
 [sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_t2uir"]
+
+[sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_7y1rf"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_tiebe"]
 animation = &"Custom/axe_attack"
@@ -77,7 +82,7 @@ animation = &"Custom/run"
 animation = &"Custom/shoot_attack"
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_4uq57"]
-graph_offset = Vector2(-327.74445, 70.41037)
+graph_offset = Vector2(-396.09982, 18.162292)
 nodes/output/position = Vector2(420, 220)
 nodes/Run/node = SubResource("AnimationNodeAnimation_7y1rf")
 nodes/Run/position = Vector2(-120, 160)
@@ -87,9 +92,30 @@ nodes/Blend/node = SubResource("AnimationNodeBlend2_6ufe4")
 nodes/Blend/position = Vector2(180, 200)
 node_connections = [&"output", 0, &"Blend", &"Blend", 0, &"Run", &"Blend", 1, &"Shoot"]
 
+[sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_tynny"]
+filter_enabled = true
+filters = ["Rig_Medium/Skeleton3D:chest", "Rig_Medium/Skeleton3D:hand.l", "Rig_Medium/Skeleton3D:hand.r", "Rig_Medium/Skeleton3D:handslot.l", "Rig_Medium/Skeleton3D:handslot.r", "Rig_Medium/Skeleton3D:head", "Rig_Medium/Skeleton3D:lowerarm.l", "Rig_Medium/Skeleton3D:lowerarm.r", "Rig_Medium/Skeleton3D:spine", "Rig_Medium/Skeleton3D:upperarm.l", "Rig_Medium/Skeleton3D:upperarm.r", "Rig_Medium/Skeleton3D:wrist.l", "Rig_Medium/Skeleton3D:wrist.r"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_4uq57"]
+animation = &"Custom/magic_shoot_attack"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_x6ag8"]
+animation = &"Custom/run"
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_eqeij"]
+graph_offset = Vector2(-434.85828, -13.750458)
+nodes/output/position = Vector2(460, 220)
+nodes/Run/node = SubResource("AnimationNodeAnimation_x6ag8")
+nodes/Run/position = Vector2(-160, 40)
+nodes/MagicShoot/node = SubResource("AnimationNodeAnimation_4uq57")
+nodes/MagicShoot/position = Vector2(-220, 300)
+nodes/Blend/node = SubResource("AnimationNodeBlend2_tynny")
+nodes/Blend/position = Vector2(160, 140)
+node_connections = [&"output", 0, &"Blend", &"Blend", 0, &"Run", &"Blend", 1, &"MagicShoot"]
+
 [resource]
-graph_offset = Vector2(47.35962, 187.30292)
-nodes/output/position = Vector2(1260, 100)
+graph_offset = Vector2(8.393402, 647.98566)
+nodes/output/position = Vector2(1320, 760)
 nodes/RunAxeAttackBlendTree/node = SubResource("AnimationNodeBlendTree_vpqms")
 nodes/RunAxeAttackBlendTree/position = Vector2(460, 260)
 nodes/IdleAxeAttackBlendTree/node = SubResource("AnimationNodeBlendTree_mmevx")
@@ -102,4 +128,10 @@ nodes/RunGunAttackBlendTree/node = SubResource("AnimationNodeBlendTree_4uq57")
 nodes/RunGunAttackBlendTree/position = Vector2(460, 760)
 nodes/IdleRunGunAttackBlend/node = SubResource("AnimationNodeBlend2_t2uir")
 nodes/IdleRunGunAttackBlend/position = Vector2(840, 620)
-node_connections = [&"output", 0, &"IdleRunGunAttackBlend", &"IdleRunAxeAttackBlend", 0, &"IdleAxeAttackBlendTree", &"IdleRunAxeAttackBlend", 1, &"RunAxeAttackBlendTree", &"IdleRunGunAttackBlend", 0, &"IdleGunAttackBlendTree", &"IdleRunGunAttackBlend", 1, &"RunGunAttackBlendTree"]
+nodes/RunMagicAttackBlendTree/node = SubResource("AnimationNodeBlendTree_eqeij")
+nodes/RunMagicAttackBlendTree/position = Vector2(480, 1220)
+nodes/Idle/node = SubResource("AnimationNodeAnimation_70yeh")
+nodes/Idle/position = Vector2(500, 1000)
+nodes/IdleRunMagicAttackBlend/node = SubResource("AnimationNodeBlend2_7y1rf")
+nodes/IdleRunMagicAttackBlend/position = Vector2(840, 1080)
+node_connections = [&"output", 0, &"IdleRunMagicAttackBlend", &"IdleRunAxeAttackBlend", 0, &"IdleAxeAttackBlendTree", &"IdleRunAxeAttackBlend", 1, &"RunAxeAttackBlendTree", &"IdleRunGunAttackBlend", 0, &"IdleGunAttackBlendTree", &"IdleRunGunAttackBlend", 1, &"RunGunAttackBlendTree", &"IdleRunMagicAttackBlend", 0, &"Idle", &"IdleRunMagicAttackBlend", 1, &"RunMagicAttackBlendTree"]

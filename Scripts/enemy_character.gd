@@ -13,7 +13,7 @@ var attack_while_idle := false
 var attack_while_moving := false
 
 # Weapon
-var current_weapon := "Gun"
+var current_weapon := "Magic"
 
 @export_category("Hit Effect")
 @export var meshes: Array[MeshInstance3D]
@@ -32,6 +32,9 @@ func switch_weapon(weapon: String):
 	
 	match current_weapon:
 		"Gun":
+			attack_while_idle = false
+			attack_while_moving = true
+		"Magic":
 			attack_while_idle = false
 			attack_while_moving = true
 		"Axe":

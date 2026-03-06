@@ -5,6 +5,7 @@ signal melee_attack
 signal ranged_attack
 
 signal melee_ended
+signal ranged_ended
 
 enum AttackType {
 	MELEE,
@@ -55,6 +56,7 @@ func attack_ranged() -> void:
 		return
 
 	if enemy.get_distance_to_target_node_sq() > ranged_attack_distance_sq:
+		ranged_ended.emit()
 		return
 
 	ranged_attack.emit()

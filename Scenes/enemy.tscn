@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://bv4u3827ya1ej" path="res://Scripts/enemy.gd" id="1_1f0kj"]
 [ext_resource type="PackedScene" uid="uid://bbfcxiomq004e" path="res://Scenes/enemy_attack_agent.tscn" id="3_afpow"]
+[ext_resource type="PackedScene" uid="uid://cq73urci8gd2y" path="res://Scenes/enemy_prototype_gun.tscn" id="4_287tu"]
+[ext_resource type="PackedScene" uid="uid://bg5xgsytkvpes" path="res://Assets/KayKit_Adventurers_2.0_FREE/Characters/models/mage.tscn" id="5_0830c"]
 [ext_resource type="PackedScene" uid="uid://bu3eff27qdtj8" path="res://Assets/KayKit_Adventurers_2.0_FREE/Characters/models/barbarian.tscn" id="5_auwsv"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_287tu"]
@@ -30,9 +32,17 @@ autostart = true
 
 [node name="EnemyAttackAgent" parent="." unique_id=1658509399 instance=ExtResource("3_afpow")]
 unique_name_in_owner = true
+attack_type = 1
 melee_distance = 4.0
 
 [node name="Barbarian" parent="." unique_id=1106249863 instance=ExtResource("5_auwsv")]
+visible = false
+
+[node name="EnemyPrototypeGun" parent="." unique_id=1745013349 node_paths=PackedStringArray("enemy_attack_agent") instance=ExtResource("4_287tu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3524667, 1.0077956, 0.6496211)
+enemy_attack_agent = NodePath("../EnemyAttackAgent")
+
+[node name="Mage" parent="." unique_id=1077297937 instance=ExtResource("5_0830c")]
 
 [connection signal="velocity_computed" from="NavigationAgent3D" to="." method="_on_navigation_agent_3d_velocity_computed"]
 [connection signal="timeout" from="UpdateNavTimer" to="." method="_on_update_nav_timer_timeout"]

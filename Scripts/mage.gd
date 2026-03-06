@@ -1,4 +1,4 @@
-class_name BarbarianCharacter extends EnemyCharacter
+class_name MageCharacter extends EnemyCharacter
 
 @onready var enemy_attack_agent: AttackAgent = %EnemyAttackAgent
 

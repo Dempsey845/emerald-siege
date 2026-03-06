@@ -1,11 +1,7 @@
-class_name AttackAgent
-extends Node3D
+class_name AttackAgent extends Node3D
 
 signal melee_attack
 signal ranged_attack
-
-signal melee_ended
-signal ranged_ended
 
 enum AttackType {
 	MELEE,
@@ -14,7 +10,6 @@ enum AttackType {
 
 @export var attack_type: AttackType
 @onready var enemy: Enemy = get_parent()
-
 
 @export_category("Ranged")
 @export var ranged_attack_distance: float = 15.0
@@ -26,16 +21,11 @@ enum AttackType {
 @onready var melee_distance_sq := melee_distance * melee_distance
 @onready var melee_cooldown_timer: Timer = %MeleeCooldownTimer
 
-var is_melee := false
-
 func attack_melee() -> void:
 	if attack_type != AttackType.MELEE:
 		return
 
 	if enemy.get_distance_to_target_node_sq() > melee_distance_sq:
-		if is_melee:
-			melee_ended.emit()
-			is_melee = false
 		return
 
 	if not melee_cooldown_timer.is_stopped():
@@ -43,20 +33,11 @@ func attack_melee() -> void:
 
 	melee_attack.emit()
 	
-	is_melee = true
-
 	melee_cooldown_timer.start()
 
 
 func attack_ranged() -> void:
-	if attack_type != AttackType.RANGED:
-		return
-
-	if not ranged_cooldown_timer.is_stopped():
-		return
-
-	if enemy.get_distance_to_target_node_sq() > ranged_attack_distance_sq:
-		ranged_ended.emit()
+	if attack_type != AttackType.RANGED or not ranged_cooldown_timer.is_stopped() or enemy.get_distance_to_target_node_sq() > ranged_attack_distance_sq:
 		return
 
 	ranged_attack.emit()

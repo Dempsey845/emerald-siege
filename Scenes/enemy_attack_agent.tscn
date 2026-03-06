@@ -7,8 +7,10 @@ script = ExtResource("1_3dj5w")
 
 [node name="RangedCooldownTimer" type="Timer" parent="." unique_id=1282378824]
 unique_name_in_owner = true
+wait_time = 2.0
 one_shot = true
 
 [node name="MeleeCooldownTimer" type="Timer" parent="." unique_id=158647575]
 unique_name_in_owner = true
+wait_time = 2.0
 one_shot = true

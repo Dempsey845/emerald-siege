@@ -1,13 +1,13 @@
 extends Node3D
 
-@export var enemy_attack_agent: AttackAgent
+@export var enemy_character: EnemyCharacter
 
 @onready var fire_point: Marker3D = %FirePoint
 
 const PROJETILE = preload("res://Scenes/enemy_projectile.tscn")
 
 func _ready() -> void:
-	enemy_attack_agent.ranged_attack.connect(shoot)
+	enemy_character.attack.connect(shoot)
 
 func shoot():
 	var projectile = PROJETILE.instantiate()

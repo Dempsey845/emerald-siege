@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://bi157jsroo68i"]
+
+[ext_resource type="PackedScene" uid="uid://cig1lc1jr77yh" path="res://Scenes/enemy.tscn" id="1_4l67y"]
+[ext_resource type="PackedScene" uid="uid://cq73urci8gd2y" path="res://Scenes/enemy_prototype_gun.tscn" id="2_jg6s8"]
+[ext_resource type="PackedScene" uid="uid://bg5xgsytkvpes" path="res://Assets/KayKit_Adventurers_2.0_FREE/Characters/models/mage.tscn" id="3_e8row"]
+
+[node name="MageEnemy" unique_id=1319831896 instance=ExtResource("1_4l67y")]
+
+[node name="EnemyPrototypeGun" parent="." index="4" unique_id=1745013349 node_paths=PackedStringArray("enemy_character") instance=ExtResource("2_jg6s8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3524667, 1.0077956, 0.6496211)
+enemy_character = NodePath("../Mage")
+
+[node name="Mage" parent="." index="5" unique_id=1077297937 instance=ExtResource("3_e8row")]

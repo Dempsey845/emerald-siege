@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://ddtsuacw68rfp"]
+
+[ext_resource type="PackedScene" uid="uid://cig1lc1jr77yh" path="res://Scenes/enemy.tscn" id="1_tabui"]
+[ext_resource type="PackedScene" uid="uid://bu3eff27qdtj8" path="res://Assets/KayKit_Adventurers_2.0_FREE/Characters/models/barbarian.tscn" id="2_jwrq8"]
+
+[node name="BarbarianEnemy" unique_id=1319831896 instance=ExtResource("1_tabui")]
+
+[node name="EnemyAttackAgent" parent="." index="3" unique_id=1658509399]
+attack_type = 0
+
+[node name="Barbarian" parent="." index="4" unique_id=1106249863 instance=ExtResource("2_jwrq8")]

@@ -9,7 +9,7 @@ enum AI_Radial_State
 
 @export_category("Radial") 
 @export var attack_agent: AttackAgent
-@export var max_distance_from_target: float = 15.0
+@export var max_distance_from_target: float = 20.0
 @export var attack_distance_from_target: float = 10.0
 @onready var max_distance_from_target_sq := max_distance_from_target * max_distance_from_target
 
@@ -67,7 +67,11 @@ func process_radial(delta: float):
 			_attack(delta)
 
 func _find_point():
-	radial_point = get_random_point_near_target(attack_distance_from_target)
+	if distance_from_target_sq < attack_distance_from_target:
+		radial_point = global_position
+	else:
+		radial_point = get_random_point_near_target(attack_distance_from_target)
+		
 	print(radial_point)
 	navigation_agent.target_position = radial_point
 	radial_state = AI_Radial_State.GoingToPoint

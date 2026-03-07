@@ -38,9 +38,7 @@ shader_parameter/caustics_mask = 1.0
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_1l0tm"]
 material = SubResource("ShaderMaterial_tedyf")
-size = Vector2(10, 10)
-subdivide_width = 100
-subdivide_depth = 100
+size = Vector2(500, 500)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_h4fw4"]
 render_priority = 0
@@ -102,7 +100,7 @@ bones/37/rotation = Quaternion(0.72125345, 0.18077984, -0.1128921, -0.6590656)
 light_energy = 0.6
 
 [node name="Water" type="MeshInstance3D" parent="." unique_id=723601932]
-transform = Transform3D(53.07, 0, 0, 0, 53.07, 0, 0, 0, 53.07, -3.0120957, 1.0937052, 6.332214)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.0120957, 1.0937052, 6.332214)
 mesh = SubResource("PlaneMesh_1l0tm")
 
 [node name="Capsule" type="MeshInstance3D" parent="." unique_id=490529191]

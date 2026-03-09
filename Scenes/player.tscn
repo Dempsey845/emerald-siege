@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://c7udm5hptfjlm" path="res://Scripts/hit_vignette.gd" id="3_vgqql"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_f60y1"]
+radius = 0.62060547
 height = 3.305664
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_vgqql"]

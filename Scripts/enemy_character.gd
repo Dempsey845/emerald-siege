@@ -1,6 +1,7 @@
 class_name EnemyCharacter extends Node3D
 
 signal attack
+signal hit_check
 
 var move_blend := 0.0
 var target_move_blend := 0.0
@@ -46,3 +47,6 @@ func play_attack():
 
 func emit_attack():
 	attack.emit()
+
+func emit_hit_check():
+	hit_check.emit()

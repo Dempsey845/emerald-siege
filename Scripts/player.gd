@@ -1,4 +1,4 @@
-extends CharacterBody3D
+class_name Player extends CharacterBody3D
 
 var move_speed := 8.0
 var mouse_sensitivity := 0.1

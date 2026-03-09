@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://dmt85n3icmye4"]
+
+[ext_resource type="PackedScene" uid="uid://c1ddk1kfl7lb1" path="res://Scenes/melee_weapon.tscn" id="1_1kbaw"]
+[ext_resource type="PackedScene" uid="uid://nyoq3lbswp8y" path="res://Assets/KayKit_Adventurers_2.0_FREE/Assets/fbx/axe_1handed.fbx" id="2_0ibwb"]
+
+[node name="AxeMeleeWeapon" unique_id=1036999740 instance=ExtResource("1_1kbaw")]
+
+[node name="axe_1handed" parent="." index="0" unique_id=389790035 instance=ExtResource("2_0ibwb")]
+transform = Transform3D(-0.9999977, -0.0021387062, 4.8872782e-05, -0.0020570764, 0.9550573, -0.2964156, 0.0005872691, -0.29641512, -0.9550592, -0.0004495383, 9.5441945e-05, -3.3915043e-05)
+
+[node name="CollisionShape3D" parent="HitArea" parent_id_path=PackedInt32Array(682105868) index="0" unique_id=145051809]
+transform = Transform3D(-4.3887574e-08, 1, -2.4854671e-08, -1, -4.372727e-08, -7.348717e-10, -1.4742909e-08, 1.3911631e-08, 1, 0.95294553, 0.62464106, -0.23935331)

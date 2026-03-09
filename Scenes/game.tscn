@@ -6,7 +6,6 @@
 [ext_resource type="Terrain3DMaterial" uid="uid://dunwsvhlkx4my" path="res://Terrain/terrain_material.tres" id="6_1l0tm"]
 [ext_resource type="Terrain3DAssets" uid="uid://ba33pwf48j0mg" path="res://Terrain/terrain_assets.tres" id="6_i6g32"]
 [ext_resource type="Texture2D" uid="uid://ljenotqgkho6" path="res://Assets/Water/waves2.png" id="7_1l0tm"]
-[ext_resource type="PackedScene" uid="uid://bi157jsroo68i" path="res://Scenes/mage_enemy.tscn" id="8_h4fw4"]
 [ext_resource type="Shader" uid="uid://bsjur35y2faf8" path="res://Assets/Water/water_v2.gdshader" id="9_h4fw4"]
 [ext_resource type="PackedScene" uid="uid://ddtsuacw68rfp" path="res://Scenes/barbarian_enemy.tscn" id="9_ldgsr"]
 
@@ -120,10 +119,6 @@ top_level = true
 metadata/_edit_lock_ = true
 
 [node name="Enemies" type="Node3D" parent="NavigationRegion3D" unique_id=712949286]
-
-[node name="MageEnemy" parent="NavigationRegion3D/Enemies" unique_id=1319831896 node_paths=PackedStringArray("target_node") instance=ExtResource("8_h4fw4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.156392, 10.431843)
-target_node = NodePath("../../../Player")
 
 [node name="BarbarianEnemy" parent="NavigationRegion3D/Enemies" unique_id=819667832 node_paths=PackedStringArray("target_node") instance=ExtResource("9_ldgsr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.921581, 2.6482725, 0)

@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://c1ddk1kfl7lb1"]
+
+[ext_resource type="Script" uid="uid://bjok4m32emhtx" path="res://Scripts/melee_weapon.gd" id="1_aodwi"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_aodwi"]
+radius = 0.39000452
+
+[node name="MeleeWeapon" type="Node3D" unique_id=1036999740]
+transform = Transform3D(0.9999978, 0.0020556827, -0.0005872098, -0.0020556273, 0.99999785, -1.4334917e-05, 0.00058712484, 1.564622e-05, 0.9999998, 0, 0, 0)
+script = ExtResource("1_aodwi")
+
+[node name="HitArea" type="Area3D" parent="." unique_id=682105868]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1.0000004, 0, 0, 0, 1.0000001, 0, 0, 0)
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HitArea" unique_id=145051809]
+shape = SubResource("SphereShape3D_aodwi")
+debug_color = Color(0.97945017, 0, 0.39180785, 0.41960785)

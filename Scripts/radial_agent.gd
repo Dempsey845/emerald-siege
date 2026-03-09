@@ -67,7 +67,7 @@ func process_radial(delta: float):
 			_attack(delta)
 
 func _find_point():
-	if distance_from_target_sq < attack_distance_from_target:
+	if distance_from_target_sq < (attack_distance_from_target * attack_distance_from_target):
 		radial_point = global_position
 	else:
 		radial_point = get_random_point_near_target(attack_distance_from_target)
@@ -77,9 +77,9 @@ func _find_point():
 	radial_state = AI_Radial_State.GoingToPoint
 	
 func _go_to_point():
-	if navigation_agent.is_navigation_finished():
-				radial_state = AI_Radial_State.Attacking
-				navigation_agent.target_position = global_position
+	if navigation_agent.is_navigation_finished() or distance_from_target_sq < (attack_distance_from_target * attack_distance_from_target):
+		radial_state = AI_Radial_State.Attacking
+		navigation_agent.target_position = global_position
 
 func _attack(delta: float):
 	attack_time += delta

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://can51xflmwu8s"]
 
-[ext_resource type="Script" uid="uid://0ca8mwlifwir" path="res://Scripts/sand_hit.gd" id="1_wg7ey"]
+[ext_resource type="Script" uid="uid://0ca8mwlifwir" path="res://Scripts/Projectile/sand_hit.gd" id="1_wg7ey"]
 
 [sub_resource type="Curve" id="Curve_dw7ly"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.09574469, 1), 0.0, 0.0, 0, 0, Vector2(0.64361703, 0.8988764), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]

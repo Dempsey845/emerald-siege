@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cdftjehuqy2kt"]
 
-[ext_resource type="Script" uid="uid://c4isvg5tuymu1" path="res://Scripts/projectile.gd" id="1_d4467"]
+[ext_resource type="Script" uid="uid://c4isvg5tuymu1" path="res://Scripts/Projectile/projectile.gd" id="1_d4467"]
 [ext_resource type="PackedScene" uid="uid://b2bffsfu8848s" path="res://Scenes/spark_hit.tscn" id="2_e1077"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_7nbq1"]

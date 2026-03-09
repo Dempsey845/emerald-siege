@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dmt85n3icmye4"]
 
-[ext_resource type="PackedScene" uid="uid://c1ddk1kfl7lb1" path="res://Scenes/melee_weapon.tscn" id="1_1kbaw"]
+[ext_resource type="PackedScene" uid="uid://c1ddk1kfl7lb1" path="res://Scenes/Enemy/MeleeWeapons/melee_weapon.tscn" id="1_1kbaw"]
 [ext_resource type="PackedScene" uid="uid://nyoq3lbswp8y" path="res://Assets/KayKit_Adventurers_2.0_FREE/Assets/fbx/axe_1handed.fbx" id="2_0ibwb"]
 
 [node name="AxeMeleeWeapon" unique_id=1036999740 instance=ExtResource("1_1kbaw")]

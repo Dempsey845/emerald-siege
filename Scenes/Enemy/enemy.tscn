@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cig1lc1jr77yh"]
 
-[ext_resource type="Script" uid="uid://bv4u3827ya1ej" path="res://Scripts/enemy.gd" id="1_1f0kj"]
-[ext_resource type="PackedScene" uid="uid://bbfcxiomq004e" path="res://Scenes/enemy_attack_agent.tscn" id="3_afpow"]
+[ext_resource type="Script" uid="uid://bv4u3827ya1ej" path="res://Scripts/Enemy/enemy.gd" id="1_1f0kj"]
+[ext_resource type="PackedScene" uid="uid://bbfcxiomq004e" path="res://Scenes/Enemy/enemy_attack_agent.tscn" id="3_afpow"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_287tu"]
 radius = 0.54345703

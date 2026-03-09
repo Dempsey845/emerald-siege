@@ -1,10 +1,10 @@
 [gd_scene format=4 uid="uid://bcj61yggf6xqi"]
 
-[ext_resource type="Script" uid="uid://0ja407ti1rp" path="res://Scripts/arms.gd" id="1_in0qx"]
+[ext_resource type="Script" uid="uid://0ja407ti1rp" path="res://Scripts/Player/arms.gd" id="1_in0qx"]
 [ext_resource type="Material" uid="uid://bh8i3fluh2akr" path="res://Assets/Arms/ArmsToon.tres" id="1_nl810"]
 [ext_resource type="Material" uid="uid://oc6gh5gmuofm" path="res://Assets/Arms/Arms.tres" id="1_x4rdd"]
 [ext_resource type="Texture2D" uid="uid://c4hblxaxdqojw" path="res://Assets/Arms/FPS_Arms_glb_Items_tex.png" id="2_nl810"]
-[ext_resource type="Script" uid="uid://rqrjd8edwggi" path="res://Scripts/gun.gd" id="4_tg5nn"]
+[ext_resource type="Script" uid="uid://rqrjd8edwggi" path="res://Scripts/Player/gun.gd" id="4_tg5nn"]
 [ext_resource type="AnimationLibrary" uid="uid://dw2mb618744bn" path="res://Animations/Arms/ArmsGlobal.res" id="5_in0qx"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_tg5nn"]

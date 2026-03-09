@@ -1,6 +1,6 @@
 extends Node3D
 
-const PROJECTILE = preload("res://Scenes/player_projectile.tscn")
+const PROJECTILE = preload("res://Scenes/Player/player_projectile.tscn")
 
 @onready var fire_point: Marker3D = $FirePoint
 

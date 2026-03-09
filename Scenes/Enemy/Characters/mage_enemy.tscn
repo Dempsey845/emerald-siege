@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://bi157jsroo68i"]
 
-[ext_resource type="PackedScene" uid="uid://cig1lc1jr77yh" path="res://Scenes/enemy.tscn" id="1_4l67y"]
-[ext_resource type="PackedScene" uid="uid://cq73urci8gd2y" path="res://Scenes/enemy_prototype_gun.tscn" id="2_jg6s8"]
+[ext_resource type="PackedScene" uid="uid://cig1lc1jr77yh" path="res://Scenes/Enemy/enemy.tscn" id="1_4l67y"]
+[ext_resource type="PackedScene" uid="uid://cq73urci8gd2y" path="res://Scenes/Enemy/enemy_prototype_gun.tscn" id="2_jg6s8"]
 [ext_resource type="PackedScene" uid="uid://bg5xgsytkvpes" path="res://Assets/KayKit_Adventurers_2.0_FREE/Characters/models/mage.tscn" id="3_e8row"]
-[ext_resource type="Script" uid="uid://cn52bvwb510pv" path="res://Scripts/radial_agent.gd" id="4_jg6s8"]
+[ext_resource type="Script" uid="uid://cn52bvwb510pv" path="res://Scripts/Enemy/radial_agent.gd" id="4_jg6s8"]
 
 [node name="MageEnemy" unique_id=1319831896 node_paths=PackedStringArray("radial_agent") instance=ExtResource("1_4l67y")]
 ai_type = 1

@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://cxcbd6rdvl7an"]
 
-[ext_resource type="Script" uid="uid://brsusgiauf3u6" path="res://Scripts/player.gd" id="1_v0iea"]
-[ext_resource type="Shader" uid="uid://c83tcvj4hhtvk" path="res://Scenes/player_hit.gdshader" id="2_6t5aa"]
-[ext_resource type="PackedScene" uid="uid://bcj61yggf6xqi" path="res://Scenes/arms.tscn" id="3_6t5aa"]
-[ext_resource type="Script" uid="uid://c7udm5hptfjlm" path="res://Scripts/hit_vignette.gd" id="3_vgqql"]
+[ext_resource type="Script" uid="uid://brsusgiauf3u6" path="res://Scripts/Player/player.gd" id="1_v0iea"]
+[ext_resource type="Shader" uid="uid://c83tcvj4hhtvk" path="res://Shaders/player_hit.gdshader" id="2_6t5aa"]
+[ext_resource type="PackedScene" uid="uid://bcj61yggf6xqi" path="res://Scenes/Player/arms.tscn" id="3_6t5aa"]
+[ext_resource type="Script" uid="uid://c7udm5hptfjlm" path="res://Scripts/Player/hit_vignette.gd" id="3_vgqql"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_f60y1"]
 radius = 0.62060547

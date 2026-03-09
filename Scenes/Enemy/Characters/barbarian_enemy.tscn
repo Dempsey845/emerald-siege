@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://ddtsuacw68rfp"]
 
-[ext_resource type="PackedScene" uid="uid://cig1lc1jr77yh" path="res://Scenes/enemy.tscn" id="1_tabui"]
+[ext_resource type="PackedScene" uid="uid://cig1lc1jr77yh" path="res://Scenes/Enemy/enemy.tscn" id="1_tabui"]
 [ext_resource type="PackedScene" uid="uid://bu3eff27qdtj8" path="res://Assets/KayKit_Adventurers_2.0_FREE/Characters/models/barbarian.tscn" id="2_jwrq8"]
 
 [node name="BarbarianEnemy" unique_id=1319831896 instance=ExtResource("1_tabui")]

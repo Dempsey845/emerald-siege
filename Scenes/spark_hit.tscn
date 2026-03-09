@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://b2bffsfu8848s"]
 
-[ext_resource type="Script" uid="uid://bbwqgk1bf4a21" path="res://Scripts/spark_hit.gd" id="1_l6kc7"]
+[ext_resource type="Script" uid="uid://bbwqgk1bf4a21" path="res://Scripts/Projectile/spark_hit.gd" id="1_l6kc7"]
 [ext_resource type="Material" uid="uid://3g4soa756ine" path="res://Assets/Fire_Project/Spark.tres" id="1_m11j3"]
 
 [sub_resource type="Gradient" id="Gradient_nb51f"]

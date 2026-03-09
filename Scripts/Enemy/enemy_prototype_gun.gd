@@ -4,7 +4,7 @@ extends Node3D
 
 @onready var fire_point: Marker3D = %FirePoint
 
-const PROJETILE = preload("res://Scenes/enemy_projectile.tscn")
+const PROJETILE = preload("res://Scenes/Enemy/enemy_projectile.tscn")
 
 func _ready() -> void:
 	enemy_character.attack.connect(shoot)

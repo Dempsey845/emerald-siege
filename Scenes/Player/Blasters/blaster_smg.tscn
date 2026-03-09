@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://b6njniwlrlkhc"]
+
+[ext_resource type="PackedScene" uid="uid://e5t0uf1eno3y" path="res://Scenes/Player/Blasters/blaster_base.tscn" id="1_h4fsx"]
+[ext_resource type="PackedScene" uid="uid://cywb2630wcpmt" path="res://Scenes/Player/Blasters/blaster_smg_model.tscn" id="2_lvn40"]
+
+[node name="BlasterSMG" unique_id=257926627 instance=ExtResource("1_h4fsx")]
+bullets_per_second = 5.0
+
+[node name="BlasterSMGModel" parent="." index="1" unique_id=383976818 instance=ExtResource("2_lvn40")]

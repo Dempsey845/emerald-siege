@@ -4,8 +4,9 @@
 [ext_resource type="Material" uid="uid://bh8i3fluh2akr" path="res://Assets/Arms/ArmsToon.tres" id="1_nl810"]
 [ext_resource type="Material" uid="uid://oc6gh5gmuofm" path="res://Assets/Arms/Arms.tres" id="1_x4rdd"]
 [ext_resource type="Texture2D" uid="uid://c4hblxaxdqojw" path="res://Assets/Arms/FPS_Arms_glb_Items_tex.png" id="2_nl810"]
-[ext_resource type="Script" uid="uid://rqrjd8edwggi" path="res://Scripts/Player/gun.gd" id="4_tg5nn"]
+[ext_resource type="Script" uid="uid://crhc7fr8w0jot" path="res://Scripts/Player/player_hand.gd" id="5_gaw5c"]
 [ext_resource type="AnimationLibrary" uid="uid://dw2mb618744bn" path="res://Animations/Arms/ArmsGlobal.res" id="5_in0qx"]
+[ext_resource type="PackedScene" uid="uid://d6niu4wncev2" path="res://Scenes/Player/Blasters/blaster_pistol.tscn" id="6_gaw5c"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_tg5nn"]
 resource_name = "FPS_Arms_glb_Cylinder_001"
@@ -479,18 +480,21 @@ mesh = SubResource("ArrayMesh_4kaxu")
 skin = SubResource("Skin_qxa2g")
 skeleton = NodePath("..")
 
-[node name="Gun" type="Node3D" parent="Arms_001/Skeleton3D/hand_1" unique_id=1665693949]
-transform = Transform3D(-1.0000001, 0, -1.4901167e-08, 0, 1, 0, 1.4901167e-08, 0, -1.0000001, -0.17500001, -1.2440141, 0.020277802)
-script = ExtResource("4_tg5nn")
-
-[node name="FirePoint" type="Marker3D" parent="Arms_001/Skeleton3D/hand_1/Gun" unique_id=278421979]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.18839431, 1.3428167, -1.5516311)
-
 [node name="Pistol_Shape" type="MeshInstance3D" parent="Arms_001/Skeleton3D" unique_id=938494159]
+visible = false
 cast_shadow = 0
 mesh = SubResource("ArrayMesh_nskxk")
 skin = SubResource("Skin_qxa2g")
 skeleton = NodePath("..")
+
+[node name="PlayerHand" type="BoneAttachment3D" parent="Arms_001/Skeleton3D" unique_id=1940202306 node_paths=PackedStringArray("arms")]
+transform = Transform3D(-0.9901474, -0.014494754, 0.13927671, 0.13978904, -0.0441328, 0.9891976, -0.0081914775, 0.9989198, 0.045724154, -0.6080191, -0.39931968, 0.73207635)
+bone_name = "Hand.R"
+bone_idx = 21
+script = ExtResource("5_gaw5c")
+arms = NodePath("../../..")
+
+[node name="BlasterPistol" parent="Arms_001/Skeleton3D/PlayerHand" unique_id=257926627 instance=ExtResource("6_gaw5c")]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1091555106]
 unique_name_in_owner = true

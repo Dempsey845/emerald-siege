@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://cywb2630wcpmt"]
+
+[ext_resource type="PackedScene" uid="uid://c1pef1auoy0yc" path="res://Assets/KenneyBlasters/FBX format/blaster-c.fbx" id="1_wyjbc"]
+[ext_resource type="Material" uid="uid://bf6ykfd0mgddy" path="res://Materials/Enemy/Blaster.tres" id="2_aoub3"]
+
+[node name="BlasterSMGModel" unique_id=383976818 instance=ExtResource("1_wyjbc")]
+
+[node name="blaster-c" parent="." index="0" unique_id=1636729882]
+transform = Transform3D(0.9883137, 0.14604604, 0.04366494, 0.043856625, 0.001908607, -0.999036, -0.14598858, 0.98927593, -0.0045187837, -0.020091206, 0.3098014, 0.15005986)
+material_override = ExtResource("2_aoub3")
+cast_shadow = 0

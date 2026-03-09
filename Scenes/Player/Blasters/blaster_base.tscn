@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://e5t0uf1eno3y"]
+
+[ext_resource type="Script" uid="uid://rqrjd8edwggi" path="res://Scripts/Player/blaster.gd" id="1_007b0"]
+
+[node name="BlasterBase" type="Node3D" unique_id=257926627]
+transform = Transform3D(1.0000001, 0, 0, 0, 0.99999976, 0, 0, 0, 1.000001, 0, 0, 0)
+script = ExtResource("1_007b0")
+
+[node name="FirePoint" type="Marker3D" parent="." unique_id=1173930095]
+transform = Transform3D(0.99014753, 0.1397891, 0.008191467, 0.014494717, -0.04413282, -0.9989191, -0.13927647, 0.98919636, -0.045724057, -0.009301841, 0.6371691, 0.20631534)

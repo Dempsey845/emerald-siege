@@ -58,4 +58,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.3437471, -0.4577222)
 
 [node name="Arms" parent="Camera3D" unique_id=1419344825 instance=ExtResource("3_6t5aa")]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.175, -0.225, 0.478)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.145, -0.23, 0.533)

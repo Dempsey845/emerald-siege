@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://d6niu4wncev2"]
+
+[ext_resource type="PackedScene" uid="uid://e5t0uf1eno3y" path="res://Scenes/Player/Blasters/blaster_base.tscn" id="1_uayai"]
+[ext_resource type="PackedScene" uid="uid://c4frpaeqs68nj" path="res://Scenes/Player/Blasters/blaster_pistol_model.tscn" id="2_txn7i"]
+
+[node name="BlasterPistol" unique_id=257926627 instance=ExtResource("1_uayai")]
+recoil_magnitude = 1
+
+[node name="FirePoint" parent="." index="0" unique_id=1173930095]
+transform = Transform3D(0.9901476, 0.13978863, 0.008191502, 0.014494794, -0.04413306, -0.9989191, -0.13927637, 0.98919636, -0.045724425, -0.009301841, 0.6371691, 0.20631534)
+
+[node name="BlasterPistolModel" parent="." index="1" unique_id=2079524925 instance=ExtResource("2_txn7i")]

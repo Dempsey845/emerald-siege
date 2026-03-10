@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://dkst4eacb12ut" path="res://Assets/GAP_EasyExplosions_Textures/Flare00.PNG" id="1_fse00"]
 
 [resource]
+cull_mode = 2
 shading_mode = 0
 vertex_color_use_as_albedo = true
 albedo_texture = ExtResource("1_fse00")

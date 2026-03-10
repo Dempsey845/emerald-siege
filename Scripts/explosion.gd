@@ -1,7 +1,14 @@
 extends Node3D
 
 @onready var effects := [%Sparks, %Flash]
+@onready var damage_area: DamageArea = %DamageArea
+
+@onready var check_hit_delay_timer: Timer = %CheckHitDelayTimer
 
 func _ready() -> void:
 	for effect in effects:
 		effect.emitting = true
+		
+
+func _on_check_hit_delay_timer_timeout() -> void:
+	damage_area.check_hit()

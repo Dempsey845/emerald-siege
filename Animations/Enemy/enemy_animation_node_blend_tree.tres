@@ -14,6 +14,16 @@ animation = &"Custom/axe_attack"
 filter_enabled = true
 filters = ["Rig_Medium/Skeleton3D:chest", "Rig_Medium/Skeleton3D:hand.l", "Rig_Medium/Skeleton3D:hand.r", "Rig_Medium/Skeleton3D:handslot.l", "Rig_Medium/Skeleton3D:handslot.r", "Rig_Medium/Skeleton3D:head", "Rig_Medium/Skeleton3D:lowerarm.l", "Rig_Medium/Skeleton3D:lowerarm.r", "Rig_Medium/Skeleton3D:spine", "Rig_Medium/Skeleton3D:upperarm.l", "Rig_Medium/Skeleton3D:upperarm.r", "Rig_Medium/Skeleton3D:wrist.l", "Rig_Medium/Skeleton3D:wrist.r"]
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_6ufe4"]
+animation = &"Custom/death"
+
+[sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_tynny"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_t2uir"]
+animation = &"Custom/death_pose"
+
+[sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_7y1rf"]
+
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_70yeh"]
 animation = &"Custom/hit_b"
 
@@ -25,8 +35,8 @@ filters = ["Rig_Medium/Skeleton3D:chest", "Rig_Medium/Skeleton3D:head", "Rig_Med
 
 [resource]
 resource_local_to_scene = true
-graph_offset = Vector2(1824.4814, 808.0703)
-nodes/output/position = Vector2(2980, 520)
+graph_offset = Vector2(2134.118, 433.75226)
+nodes/output/position = Vector2(4100, 620)
 nodes/AttackAnimation/node = SubResource("AnimationNodeAnimation_qr7cd")
 nodes/AttackAnimation/position = Vector2(1900, 900)
 nodes/AttackOneShot/node = SubResource("AnimationNodeOneShot_70yeh")
@@ -41,4 +51,12 @@ nodes/HitOneShot/node = SubResource("AnimationNodeOneShot_6ufe4")
 nodes/HitOneShot/position = Vector2(2720, 680)
 nodes/HitAnimation/node = SubResource("AnimationNodeAnimation_70yeh")
 nodes/HitAnimation/position = Vector2(2540, 920)
-node_connections = [&"output", 0, &"HitOneShot", &"AttackOneShot", 0, &"IdleToRun", &"AttackOneShot", 1, &"AttackAnimation", &"IdleToRun", 0, &"Animation 2", &"IdleToRun", 1, &"Animation", &"HitOneShot", 0, &"AttackOneShot", &"HitOneShot", 1, &"HitAnimation"]
+nodes/DeathOneShot/node = SubResource("AnimationNodeOneShot_tynny")
+nodes/DeathOneShot/position = Vector2(3260, 640)
+nodes/DeathAnimation/node = SubResource("AnimationNodeAnimation_6ufe4")
+nodes/DeathAnimation/position = Vector2(2958.4976, 938.5604)
+nodes/DeathPoseBlend/node = SubResource("AnimationNodeBlend2_7y1rf")
+nodes/DeathPoseBlend/position = Vector2(3840, 620)
+nodes/DeathPoseAnimation/node = SubResource("AnimationNodeAnimation_t2uir")
+nodes/DeathPoseAnimation/position = Vector2(3600, 860)
+node_connections = [&"output", 0, &"DeathPoseBlend", &"AttackOneShot", 0, &"IdleToRun", &"AttackOneShot", 1, &"AttackAnimation", &"IdleToRun", 0, &"Animation 2", &"IdleToRun", 1, &"Animation", &"HitOneShot", 0, &"AttackOneShot", &"HitOneShot", 1, &"HitAnimation", &"DeathOneShot", 0, &"HitOneShot", &"DeathOneShot", 1, &"DeathAnimation", &"DeathPoseBlend", 0, &"DeathOneShot", &"DeathPoseBlend", 1, &"DeathPoseAnimation"]

@@ -1,6 +1,7 @@
 class_name Enemy extends CharacterBody3D
 
 signal damage_taken
+signal death
 
 const MOVE_SPEED := 7.0
 const ROTATION_SPEED := 6.0
@@ -19,12 +20,13 @@ enum AI_Type
 @onready var navigation_agent: NavigationAgent3D = %NavigationAgent3D
 
 var health := 3
+var alive := true
 
 func _ready() -> void:
 	await get_tree().create_timer(0.2).timeout
 
 func _physics_process(delta: float) -> void:
-	if not target_node:
+	if not alive or not target_node:
 		return
 
 	if ai_type == AI_Type.Chase and navigation_agent.is_navigation_finished():
@@ -73,11 +75,13 @@ func look_at_direction(direction: Vector3, delta: float):
 		rotation.y = lerp_angle(rotation.y, target_angle, delta * ROTATION_SPEED)
 
 func _on_navigation_agent_3d_velocity_computed(safe_velocity: Vector3) -> void:
+	if not alive:
+		return
 	velocity = safe_velocity
 	move_and_slide()
 
 func _on_update_nav_timer_timeout() -> void:
-	if not target_node:
+	if not alive or not target_node:
 		return
 
 	if radial_agent:
@@ -89,5 +93,18 @@ func _on_update_nav_timer_timeout() -> void:
 		
 
 func take_damage(damage: int):
+	if not alive:
+		return
+	
 	health -= damage
 	damage_taken.emit()
+	
+	if health <= 0:
+		alive = false
+		%CollisionShape3D.disabled = true
+		%QueueFreeDelayTimer.start()
+		death.emit()
+
+
+func _on_queue_free_delay_timer_timeout() -> void:
+	call_deferred("queue_free")

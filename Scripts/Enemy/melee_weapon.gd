@@ -2,6 +2,7 @@ class_name MeleeWeapon extends Node3D
 
 @export var damage: int = 1
 @export var enemy_character: EnemyCharacter
+@export var weapon_mesh: MeshInstance3D
 
 @export_range(0.0, 5.0, 0.05) var hit_check_start_time := 0.20 # A delay from the start of the attack animation
 @export_range(0.0, 5.0, 0.05) var hit_check_end_time := 0.30 
@@ -11,6 +12,10 @@ class_name MeleeWeapon extends Node3D
 var checking_for_hit := false
 var hit_check_timer := 0.0
 var has_hit_this_check := false
+
+var dissolving := false
+var dissolve_amount := 0.0
+var dissolve_speed := 0.5
 
 func _ready() -> void:
 	if not enemy_character:
@@ -27,6 +32,11 @@ func _process(delta: float) -> void:
 		
 		if hit_check_timer > hit_check_end_time:
 			_end_hit_check()
+			
+	if dissolving:
+		dissolve_amount += delta * dissolve_speed
+		weapon_mesh.set_instance_shader_parameter("dissolve_amount", dissolve_amount)
+		weapon_mesh.transparency = dissolve_amount
 			
 func _start_hit_check():
 	hit_check_timer = 0.0
@@ -52,3 +62,7 @@ func check_hit() -> bool:
 		return true
 		
 	return false
+
+func dissolve():
+	dissolving = true
+	weapon_mesh.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF

@@ -7,4 +7,4 @@ func _ready():
 	super._ready()
 	enemy_attack_agent.ranged_attack.connect(play_attack)
 	enemy_parent.damage_taken.connect(play_hit)
-	
+	enemy_parent.death.connect(play_death)

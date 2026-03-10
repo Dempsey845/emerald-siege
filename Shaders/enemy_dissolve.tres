@@ -1,0 +1,15 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://bw4moj7rxgyj8"]
+
+[ext_resource type="Shader" uid="uid://bdlyogmyc1681" path="res://Shaders/dissolve.gdshader" id="1_eiapp"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_4qess"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_vdgw8"]
+noise = SubResource("FastNoiseLite_4qess")
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_eiapp")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_vdgw8")
+shader_parameter/edge_size = 0.05
+shader_parameter/edge_color = Color(0.44672376, 0.98355645, 0.28493494, 1)

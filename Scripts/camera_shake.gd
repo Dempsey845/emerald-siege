@@ -1,11 +1,13 @@
 class_name CameraShake extends Node3D
 
-@export var decay_rate: float = 3.0        # How fast shakes fade
-@export var trauma_power: float = 2.0      # Non-linear shake intensity
-@export var max_position_offset: Vector3 = Vector3(0.5, 0.5, 0.5)  # Max positional shake
-@export var max_rotation_offset: Vector3 = Vector3(5, 5, 5)        # Max rotation in degrees
+@export var decay_rate: float = 3.0
+@export var trauma_power: float = 2.0
+@export var max_position_offset: Vector3 = Vector3(0.5, 0.5, 0.5)
+@export var max_rotation_offset: Vector3 = Vector3(5, 5, 5)
 
-var shakes := []  
+@export var fade_distance: float = 50.0  # distance at which shake is halved
+
+var shakes := []
 var noise := FastNoiseLite.new()
 var noise_counter: float = 0.0
 
@@ -14,11 +16,9 @@ func _ready():
 	noise.seed = randi()
 	noise.frequency = 8.0
 
-
 func _process(delta: float) -> void:
 	noise_counter += delta * 10
 
-	# Update all shakes
 	var total_trauma: float = 0.0
 	for i in range(shakes.size() - 1, -1, -1):
 		var s = shakes[i]
@@ -26,30 +26,30 @@ func _process(delta: float) -> void:
 		if s.time <= 0:
 			shakes.remove_at(i)
 		else:
-			total_trauma += s.intensity
+			var distance = global_position.distance_to(s.position)
+			var distance_factor = clamp(1.0 - (distance / fade_distance), 0.0, 1.0)
+			total_trauma += s.intensity * distance_factor
 
 	if total_trauma > 0:
 		_apply_shake(total_trauma)
 	else:
-		# Reset to default when no shake
 		position = Vector3.ZERO
 		rotation = Vector3.ZERO
-
 
 # Add a shake impulse
 # intensity: 0.0 to 1.0
 # duration: seconds the shake lasts
-# direction: Vector3 to bias shake 
-func add_shake(intensity: float, duration: float = 0.5, direction: Vector3 = Vector3.ZERO) -> void:
+# pos: Vector3 where the shake originates
+# direction: Vector3 to bias shake
+func add_shake(intensity: float, duration: float = 0.5, pos: Vector3 = Vector3.ZERO, direction: Vector3 = Vector3.ZERO) -> void:
 	shakes.append({
 		"intensity": clamp(intensity, 0.0, 1.0),
 		"time": duration,
-		"direction": direction
+		"direction": direction,
+		"position": pos
 	})
 
-
 func _apply_shake(total_intensity: float) -> void:
-	# Apply non-linear trauma curve
 	var trauma = pow(clamp(total_intensity, 0.0, 1.0), trauma_power)
 
 	# Positional shake
@@ -66,10 +66,12 @@ func _apply_shake(total_intensity: float) -> void:
 		deg_to_rad(max_rotation_offset.z) * trauma * noise.get_noise_2d(5, noise_counter)
 	)
 
-	# Apply directional bias if any
+	# Directional bias
 	var dir_bias = Vector3.ZERO
 	for s in shakes:
-		dir_bias += s.direction * s.intensity * 0.5  # scale directional effect
+		var distance = global_position.distance_to(s.position)
+		var distance_factor = clamp(1.0 - (distance / fade_distance), 0.0, 1.0)
+		dir_bias += s.direction * s.intensity * 0.5 * distance_factor
 
 	position = offset + dir_bias
 	rotation = rot_offset

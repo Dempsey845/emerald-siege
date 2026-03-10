@@ -88,6 +88,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.6200383, 20.194138)
 transform = Transform3D(-0.7281616, -1.8627348, 0, 1.8627348, -0.7281616, 0, 0, 0, 2, -0.344586, 0.17467022, -0.183422)
 mesh = SubResource("CapsuleMesh_v158k")
 
+[node name="Capsule2" type="MeshInstance3D" parent="." unique_id=712290136]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -0.344586, 2.5546656, -12.183422)
+mesh = SubResource("CapsuleMesh_v158k")
+
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="." unique_id=1291716489]
 navigation_mesh = SubResource("NavigationMesh_1l0tm")
 
@@ -119,6 +123,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.679163, 0)
 mesh = SubResource("PlaneMesh_rku1e")
 
 [node name="Grenade" parent="." unique_id=1547832993 instance=ExtResource("9_h4fw4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.774643, 4.1596985, 12.962335)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.774643, 4.1596985, -12.640439)
 
 [editable path="Player"]

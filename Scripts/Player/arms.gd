@@ -14,11 +14,11 @@ func fire(magnitude: Blaster.RecoilMagnitude, bullets_per_second: float = 2.0):
 	if magnitude == Blaster.RecoilMagnitude.Small:
 		var animation_speed = SMALL_RECOIL_ANIM_LENGTH/(1/bullets_per_second)
 		animation_player.play(SMALL_FIRE, 0.0, animation_speed)
-		camera_shake.add_shake(0.15, 0.15)
+		camera_shake.add_shake(0.15, 0.15, global_position)
 	else:
 		var animation_speed = BIG_RECOIL_ANIM_LENGTH/(1/bullets_per_second)
 		animation_player.play(FIRE, 0.0, animation_speed)
-		camera_shake.add_shake(0.25, 0.2)
+		camera_shake.add_shake(0.25, 0.2, global_position)
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == FIRE:

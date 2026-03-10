@@ -10,7 +10,7 @@ func _ready() -> void:
 		effect.emitting = true
 		
 	var game_manager: GameManager = get_tree().current_scene
-	game_manager.add_camera_shake(0.5, 1.0)
+	game_manager.add_camera_shake(0.5, 1.0, global_position)
 	
 func _on_check_hit_delay_timer_timeout() -> void:
 	damage_area.check_hit()

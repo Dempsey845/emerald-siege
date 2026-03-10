@@ -4,6 +4,7 @@
 [ext_resource type="Shader" uid="uid://c83tcvj4hhtvk" path="res://Shaders/player_hit.gdshader" id="2_6t5aa"]
 [ext_resource type="PackedScene" uid="uid://bcj61yggf6xqi" path="res://Scenes/Player/arms.tscn" id="3_6t5aa"]
 [ext_resource type="Script" uid="uid://c7udm5hptfjlm" path="res://Scripts/Player/hit_vignette.gd" id="3_vgqql"]
+[ext_resource type="Script" uid="uid://0l43g0mi36w1" path="res://Scripts/camera_shake.gd" id="4_htcer"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_f60y1"]
 radius = 0.62060547
@@ -52,11 +53,15 @@ mouse_filter = 2
 color = Color(1, 0.24780053, 0, 1)
 script = ExtResource("3_vgqql")
 
-[node name="Camera3D" type="Camera3D" parent="." unique_id=1621509828]
+[node name="CameraShake" type="Node3D" parent="." unique_id=508698861]
+script = ExtResource("4_htcer")
+
+[node name="Camera3D" type="Camera3D" parent="CameraShake" unique_id=1621509828]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.3437471, -0.4577222)
 fov = 80.0
 
-[node name="Arms" parent="Camera3D" unique_id=1419344825 instance=ExtResource("3_6t5aa")]
+[node name="Arms" parent="CameraShake/Camera3D" unique_id=1419344825 node_paths=PackedStringArray("camera_shake") instance=ExtResource("3_6t5aa")]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.035, -0.31, 0.428)
+camera_shake = NodePath("../..")

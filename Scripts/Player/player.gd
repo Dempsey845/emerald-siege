@@ -12,7 +12,7 @@ var sway_amount := 0.05
 var sway_speed := 6.0
 
 # Mouse sway
-var mouse_sway_amount := 0.0008
+var mouse_sway_amount := 0.006
 var mouse_delta := Vector2.ZERO
 
 # Idle breathing

@@ -10,7 +10,6 @@
 [ext_resource type="PackedScene" uid="uid://bi157jsroo68i" path="res://Scenes/Enemy/Characters/mage_enemy.tscn" id="8_h4fw4"]
 [ext_resource type="PackedScene" uid="uid://dsj1w6h618sxx" path="res://Scenes/grenade.tscn" id="9_h4fw4"]
 [ext_resource type="PackedScene" uid="uid://ddtsuacw68rfp" path="res://Scenes/Enemy/Characters/barbarian_enemy.tscn" id="9_ldgsr"]
-[ext_resource type="PackedScene" uid="uid://bogp4c6pcuknf" path="res://Scenes/explosion.tscn" id="10_ldgsr"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_h4fw4"]
 render_priority = 0
@@ -121,8 +120,5 @@ mesh = SubResource("PlaneMesh_rku1e")
 
 [node name="Grenade" parent="." unique_id=1547832993 instance=ExtResource("9_h4fw4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.774643, 4.1596985, 12.962335)
-
-[node name="Explosion" parent="." unique_id=1246259482 instance=ExtResource("10_ldgsr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.148, -9.452192)
 
 [editable path="Player"]

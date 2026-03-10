@@ -128,10 +128,6 @@ material_override = ExtResource("2_7bgu8")
 cast_shadow = 0
 mesh = ExtResource("3_ix0u3")
 
-[node name="Light" type="OmniLight3D" parent="GrenadeCasing/Fire_Drop3" unique_id=2036208387]
-light_color = Color(0, 0.7607843, 0, 1)
-light_energy = 0.7
-
 [node name="Sparks" type="GPUParticles3D" parent="GrenadeCasing/Fire_Drop3" unique_id=1461042750]
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)
 cast_shadow = 0
@@ -152,10 +148,6 @@ transform = Transform3D(-0.046989612, -0.17536762, 4.440892e-16, 7.6655615e-09, 
 material_override = ExtResource("2_7bgu8")
 cast_shadow = 0
 mesh = ExtResource("3_ix0u3")
-
-[node name="Light" type="OmniLight3D" parent="GrenadeCasing/Fire_Drop5" unique_id=936063777]
-light_color = Color(0, 0.7607843, 0, 1)
-light_energy = 0.7
 
 [node name="Sparks" type="GPUParticles3D" parent="GrenadeCasing/Fire_Drop5" unique_id=1454345246]
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)
@@ -178,10 +170,6 @@ material_override = ExtResource("2_7bgu8")
 cast_shadow = 0
 mesh = ExtResource("3_ix0u3")
 
-[node name="Light" type="OmniLight3D" parent="GrenadeCasing/Fire_Drop7" unique_id=1786597331]
-light_color = Color(0, 0.7607843, 0, 1)
-light_energy = 0.7
-
 [node name="Sparks" type="GPUParticles3D" parent="GrenadeCasing/Fire_Drop7" unique_id=1271307644]
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)
 cast_shadow = 0
@@ -203,10 +191,6 @@ material_override = ExtResource("2_7bgu8")
 cast_shadow = 0
 mesh = ExtResource("3_ix0u3")
 
-[node name="Light" type="OmniLight3D" parent="GrenadeCasing/Fire_Drop8" unique_id=1956592966]
-light_color = Color(0, 0.7607843, 0, 1)
-light_energy = 0.7
-
 [node name="Sparks" type="GPUParticles3D" parent="GrenadeCasing/Fire_Drop8" unique_id=1307478291]
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)
 cast_shadow = 0
@@ -227,10 +211,6 @@ transform = Transform3D(-0.045388483, 0.15723032, 0.07861517, -0.15723032, 7.450
 material_override = ExtResource("2_7bgu8")
 cast_shadow = 0
 mesh = ExtResource("3_ix0u3")
-
-[node name="Light" type="OmniLight3D" parent="GrenadeCasing/Fire_Drop6" unique_id=524649297]
-light_color = Color(0, 0.7607843, 0, 1)
-light_energy = 0.7
 
 [node name="Sparks" type="GPUParticles3D" parent="GrenadeCasing/Fire_Drop6" unique_id=161370814]
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)
@@ -254,8 +234,9 @@ cast_shadow = 0
 mesh = ExtResource("3_ix0u3")
 
 [node name="Light" type="OmniLight3D" parent="GrenadeCasing/Fire_Drop4" unique_id=2123133451]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5980682, 7.1054274e-15)
 light_color = Color(0, 0.7607843, 0, 1)
-light_energy = 0.7
+light_energy = 1.641
 
 [node name="Sparks" type="GPUParticles3D" parent="GrenadeCasing/Fire_Drop4" unique_id=1441691769]
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)

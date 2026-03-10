@@ -8,26 +8,37 @@ animation = &"Custom/run"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_qr7cd"]
 resource_local_to_scene = true
-animation = &"Custom/magic_shoot_attack"
+animation = &"Custom/axe_attack"
 
 [sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_70yeh"]
 filter_enabled = true
 filters = ["Rig_Medium/Skeleton3D:chest", "Rig_Medium/Skeleton3D:hand.l", "Rig_Medium/Skeleton3D:hand.r", "Rig_Medium/Skeleton3D:handslot.l", "Rig_Medium/Skeleton3D:handslot.r", "Rig_Medium/Skeleton3D:head", "Rig_Medium/Skeleton3D:lowerarm.l", "Rig_Medium/Skeleton3D:lowerarm.r", "Rig_Medium/Skeleton3D:spine", "Rig_Medium/Skeleton3D:upperarm.l", "Rig_Medium/Skeleton3D:upperarm.r", "Rig_Medium/Skeleton3D:wrist.l", "Rig_Medium/Skeleton3D:wrist.r"]
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_70yeh"]
+animation = &"Custom/hit_b"
+
+[sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_6ufe4"]
+filter_enabled = true
+filters = ["Rig_Medium/Skeleton3D:chest", "Rig_Medium/Skeleton3D:head", "Rig_Medium/Skeleton3D:spine"]
+
 [sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_c6hlm"]
 
 [resource]
 resource_local_to_scene = true
-graph_offset = Vector2(756.15967, 265.0533)
-nodes/output/position = Vector2(2700, 500)
+graph_offset = Vector2(1824.4814, 808.0703)
+nodes/output/position = Vector2(2980, 520)
 nodes/AttackAnimation/node = SubResource("AnimationNodeAnimation_qr7cd")
-nodes/AttackAnimation/position = Vector2(1960, 740)
+nodes/AttackAnimation/position = Vector2(1900, 900)
 nodes/AttackOneShot/node = SubResource("AnimationNodeOneShot_70yeh")
-nodes/AttackOneShot/position = Vector2(2400, 680)
+nodes/AttackOneShot/position = Vector2(2340, 840)
 nodes/Animation/node = SubResource("AnimationNodeAnimation_18qq7")
 nodes/Animation/position = Vector2(1540, 640)
 "nodes/Animation 2/node" = SubResource("AnimationNodeAnimation_eqeij")
 "nodes/Animation 2/position" = Vector2(1540, 420)
 nodes/IdleToRun/node = SubResource("AnimationNodeBlend2_c6hlm")
 nodes/IdleToRun/position = Vector2(1860, 460)
-node_connections = [&"output", 0, &"AttackOneShot", &"AttackOneShot", 0, &"IdleToRun", &"AttackOneShot", 1, &"AttackAnimation", &"IdleToRun", 0, &"Animation 2", &"IdleToRun", 1, &"Animation"]
+nodes/HitOneShot/node = SubResource("AnimationNodeOneShot_6ufe4")
+nodes/HitOneShot/position = Vector2(2720, 680)
+nodes/HitAnimation/node = SubResource("AnimationNodeAnimation_70yeh")
+nodes/HitAnimation/position = Vector2(2540, 920)
+node_connections = [&"output", 0, &"HitOneShot", &"AttackOneShot", 0, &"IdleToRun", &"AttackOneShot", 1, &"AttackAnimation", &"IdleToRun", 0, &"Animation 2", &"IdleToRun", 1, &"Animation", &"HitOneShot", 0, &"AttackOneShot", &"HitOneShot", 1, &"HitAnimation"]

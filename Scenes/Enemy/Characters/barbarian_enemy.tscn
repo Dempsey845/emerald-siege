@@ -8,4 +8,5 @@
 [node name="EnemyAttackAgent" parent="." index="3" unique_id=1658509399]
 attack_type = 0
 
-[node name="Barbarian" parent="." index="4" unique_id=1106249863 instance=ExtResource("2_jwrq8")]
+[node name="Barbarian" parent="." index="4" unique_id=1106249863 node_paths=PackedStringArray("enemy_parent") instance=ExtResource("2_jwrq8")]
+enemy_parent = NodePath("..")

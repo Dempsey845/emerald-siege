@@ -13,7 +13,8 @@ radial_agent = NodePath("RadialAgent")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3524667, 1.0077956, 0.6496211)
 enemy_character = NodePath("../Mage")
 
-[node name="Mage" parent="." index="5" unique_id=1077297937 instance=ExtResource("3_e8row")]
+[node name="Mage" parent="." index="5" unique_id=1077297937 node_paths=PackedStringArray("enemy_parent") instance=ExtResource("3_e8row")]
+enemy_parent = NodePath("..")
 
 [node name="RadialAgent" type="Node3D" parent="." index="6" unique_id=311371917 node_paths=PackedStringArray("attack_agent")]
 script = ExtResource("4_jg6s8")

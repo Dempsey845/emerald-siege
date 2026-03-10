@@ -44,6 +44,9 @@ func _blend_animations(delta: float):
 func play_attack():
 	animation_tree.set("parameters/AttackOneShot/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
 	attack.emit()
+	
+func play_hit():
+	animation_tree.set("parameters/HitOneShot/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
 
 func emit_attack():
 	attack.emit()

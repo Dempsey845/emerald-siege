@@ -137,6 +137,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.774643, 4.1596985, -12.640
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1750312, -18.633984)
 
 [node name="EmeraldEnergy" type="Node3D" parent="." unique_id=216816142]
+unique_name_in_owner = true
 script = ExtResource("12_rku1e")
 
 [editable path="Player"]

@@ -6,9 +6,13 @@ const BLASTER_SMG = preload("res://Scenes/Player/Blasters/blaster_smg.tscn")
 
 @onready var current_blaster: Blaster = $BlasterPistol
 
+@onready var emerald_energy: EmeraldEnergy = get_tree().current_scene.get_node("%EmeraldEnergy")
+
 @export var arms: Arms
 
 var can_shoot = true
+
+var energy_consumption_per_bullet := 2.0
 
 enum BlasterType
 {
@@ -34,8 +38,9 @@ func change_blaster(type: BlasterType):
 	add_child(current_blaster)
 
 func _process(_delta: float) -> void:
-	if Input.is_action_pressed("shoot") and can_shoot:
+	if can_shoot and Input.is_action_pressed("shoot") and emerald_energy.energy > energy_consumption_per_bullet:
 		shoot_projectile()
+		emerald_energy.take_energy(energy_consumption_per_bullet)
 		arms.fire(current_blaster.recoil_magnitude, current_blaster.bullets_per_second)
 		can_shoot = false
 		await arms.animation_player.animation_finished

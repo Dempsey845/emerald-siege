@@ -109,9 +109,10 @@ draw_pass_1 = SubResource("SphereMesh_a801j")
 [node name="DamageArea" type="Area3D" parent="." unique_id=1394430310]
 unique_name_in_owner = true
 collision_layer = 0
-collision_mask = 8
+collision_mask = 9
 script = ExtResource("4_k2xjm")
 damage = 3
+emerald_energy = 75.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DamageArea" unique_id=918304323]
 shape = SubResource("SphereShape3D_4okmj")

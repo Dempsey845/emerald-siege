@@ -4,12 +4,12 @@ signal energy_changed(energy_value: float)
 
 @onready var regen_delay_timer: Timer = %RegenDelayTimer
 
-var energy := 50.0
+var energy := 0.0
 var max_energy := 100.0
 
 var can_regen := true
 
-var regen_speed := 15.0
+var regen_speed := 10.0
 
 var can_absorb := true
 var absorb_amount := 35.0

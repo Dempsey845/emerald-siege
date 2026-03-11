@@ -12,7 +12,7 @@ var can_regen := true
 var regen_speed := 15.0
 
 var can_absorb := true
-var absorb_amount := 15.0
+var absorb_amount := 35.0
 
 func _on_interact_area_interacted() -> void:
 	print("Interacting with repo!")

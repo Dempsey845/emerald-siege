@@ -14,17 +14,18 @@ radius = 3.5273037
 collision_mask = 15
 script = ExtResource("1_pc15h")
 
-[node name="EmeraldModel" parent="." unique_id=609024041 instance=ExtResource("1_x88ex")]
+[node name="EmeraldModel" parent="." unique_id=609024041 node_paths=PackedStringArray("emerald_repository") instance=ExtResource("1_x88ex")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3793218, 0)
+emerald_repository = NodePath("..")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=356702353]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0896161, 0)
 shape = SubResource("SphereShape3D_r66k1")
 
-[node name="InteractArea" type="Area3D" parent="." unique_id=1190384293 groups=["EmeraldRepository"]]
+[node name="InteractArea" type="Area3D" parent="." unique_id=1190384293]
 unique_name_in_owner = true
 collision_layer = 1536
-collision_mask = 0
+collision_mask = 256
 script = ExtResource("2_r66k1")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="InteractArea" unique_id=382736666]
@@ -32,4 +33,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1690807, 0)
 shape = SubResource("SphereShape3D_x88ex")
 debug_color = Color(0, 0.6452975, 0.26969075, 0.41960785)
 
+[node name="RegenDelayTimer" type="Timer" parent="." unique_id=232735314]
+unique_name_in_owner = true
+wait_time = 3.0
+one_shot = true
+
+[connection signal="area_entered" from="InteractArea" to="InteractArea" method="_on_area_entered"]
 [connection signal="interacted" from="InteractArea" to="." method="_on_interact_area_interacted"]
+[connection signal="timeout" from="RegenDelayTimer" to="." method="_on_regen_delay_timer_timeout"]

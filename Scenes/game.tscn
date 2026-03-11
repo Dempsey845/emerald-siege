@@ -84,11 +84,11 @@ camera_shake = NodePath("Player/CameraShake")
 [node name="Player" parent="." unique_id=684757255 instance=ExtResource("2_qxrlw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.6200383, 20.194138)
 
-[node name="EnergyProgress" parent="Player/PlayerCanvasLayer" parent_id_path=PackedInt32Array(684757255, 680215882) index="2" unique_id=1424602930 node_paths=PackedStringArray("emerald_energy")]
+[node name="EnergyProgress" parent="Player/PlayerCanvasLayer" parent_id_path=PackedInt32Array(684757255, 680215882) index="3" unique_id=1424602930 node_paths=PackedStringArray("emerald_energy")]
 emerald_energy = NodePath("../../../EmeraldEnergy")
 
-[node name="PlayerInteractArea" parent="Player" index="3" unique_id=1831856466 node_paths=PackedStringArray("emerald_energy")]
-emerald_energy = NodePath("../../EmeraldEnergy")
+[node name="PlayerInteractArea" parent="Player" index="3" unique_id=1831856466 node_paths=PackedStringArray("player_energy")]
+player_energy = NodePath("../../EmeraldEnergy")
 
 [node name="Sky" parent="." unique_id=248369870 instance=ExtResource("3_3dryh")]
 

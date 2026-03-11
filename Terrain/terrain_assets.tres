@@ -1,13 +1,22 @@
 [gd_resource type="Terrain3DAssets" format=3 uid="uid://ba33pwf48j0mg"]
 
-[ext_resource type="Material" uid="uid://5k6jxr3qack3" path="res://Assets/Sand/Sand.tres" id="1_6whxq"]
 [ext_resource type="Texture2D" uid="uid://cvs308wte7xkl" path="res://Assets/Sand/Stylized_Sand_001_basecolor.jpg" id="2_c2oog"]
 [ext_resource type="Texture2D" uid="uid://df5eu1hy0xeet" path="res://Assets/Sand/Stylized_Sand_001_normal.jpg" id="3_mq6lq"]
 
-[sub_resource type="Terrain3DMeshAsset" id="Terrain3DMeshAsset_rfjv2"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q4ify"]
+transparency = 4
+cull_mode = 2
+vertex_color_use_as_albedo = true
+backlight_enabled = true
+backlight = Color(0.5, 0.5, 0.5, 1)
+distance_fade_mode = 1
+distance_fade_min_distance = 128.0
+distance_fade_max_distance = 96.0
+
+[sub_resource type="Terrain3DMeshAsset" id="Terrain3DMeshAsset_6whxq"]
 generated_type = 1
 height_offset = 0.5
-material_override = ExtResource("1_6whxq")
+material_override = SubResource("StandardMaterial3D_q4ify")
 last_lod = 0
 last_shadow_lod = 0
 lod0_range = 128.0
@@ -18,5 +27,5 @@ albedo_texture = ExtResource("2_c2oog")
 normal_texture = ExtResource("3_mq6lq")
 
 [resource]
-mesh_list = Array[Terrain3DMeshAsset]([SubResource("Terrain3DMeshAsset_rfjv2")])
+mesh_list = Array[Terrain3DMeshAsset]([SubResource("Terrain3DMeshAsset_6whxq")])
 texture_list = Array[Terrain3DTextureAsset]([SubResource("Terrain3DTextureAsset_nb51f")])

@@ -35,7 +35,7 @@ debug_color = Color(0, 0.6452975, 0.26969075, 0.41960785)
 
 [node name="RegenDelayTimer" type="Timer" parent="." unique_id=232735314]
 unique_name_in_owner = true
-wait_time = 3.0
+wait_time = 10.0
 one_shot = true
 
 [connection signal="area_entered" from="InteractArea" to="InteractArea" method="_on_area_entered"]

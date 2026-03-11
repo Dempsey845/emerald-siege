@@ -1,9 +1,14 @@
 extends ColorRect
 
+@export var player_interact_area: PlayerInteractArea
 @export var fade_speed := 3.0
 var current_intensity := 0.0
 
 var show_vignette := false
+
+func _ready() -> void:
+	player_interact_area.absorb_started.connect(start_asorb)
+	player_interact_area.absorb_ended.connect(stop_absorb)
 
 func _process(delta):
 	if current_intensity > 0:

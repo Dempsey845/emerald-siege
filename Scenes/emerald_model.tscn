@@ -95,7 +95,7 @@ material = SubResource("StandardMaterial3D_jf03q")
 sections = 2
 curve = SubResource("Curve_pxj72")
 
-[node name="Emerald" unique_id=609024041 instance=ExtResource("1_godkk")]
+[node name="EmeraldModel" unique_id=609024041 instance=ExtResource("1_godkk")]
 
 [node name="Cube" parent="." index="0" unique_id=1904264985]
 material_override = ExtResource("2_8wrva")

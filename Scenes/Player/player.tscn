@@ -4,7 +4,9 @@
 [ext_resource type="Shader" uid="uid://c83tcvj4hhtvk" path="res://Shaders/player_hit.gdshader" id="2_6t5aa"]
 [ext_resource type="PackedScene" uid="uid://bcj61yggf6xqi" path="res://Scenes/Player/arms.tscn" id="3_6t5aa"]
 [ext_resource type="Script" uid="uid://c7udm5hptfjlm" path="res://Scripts/Player/hit_vignette.gd" id="3_vgqql"]
+[ext_resource type="Script" uid="uid://bheiffxpxa8ka" path="res://Scripts/Player/energy_progress.gd" id="4_0u5uq"]
 [ext_resource type="Script" uid="uid://0l43g0mi36w1" path="res://Scripts/camera_shake.gd" id="4_htcer"]
+[ext_resource type="Script" uid="uid://dv7wbsowsrdjd" path="res://Scripts/Player/player_interact_area.gd" id="6_dd0ac"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_f60y1"]
 radius = 0.62060547
@@ -14,6 +16,21 @@ height = 3.305664
 shader = ExtResource("2_6t5aa")
 shader_parameter/intensity = 0.0
 shader_parameter/color = Color(1, 0.24780053, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dd0ac"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
+bg_color = Color(0, 0.99712914, 0.19029903, 0.4)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+corner_detail = 6
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_htcer"]
+radius = 1.6132623
 
 [node name="Player" type="CharacterBody3D" unique_id=684757255 groups=["Player"]]
 collision_layer = 4
@@ -53,6 +70,32 @@ mouse_filter = 2
 color = Color(1, 0.24780053, 0, 1)
 script = ExtResource("3_vgqql")
 
+[node name="EnergyProgress" type="Control" parent="PlayerCanvasLayer" unique_id=1424602930]
+layout_mode = 3
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -623.0
+offset_bottom = 55.0
+grow_horizontal = 0
+script = ExtResource("4_0u5uq")
+
+[node name="EnergyProgressBar" type="ProgressBar" parent="PlayerCanvasLayer/EnergyProgress" unique_id=1757672381]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -150.0
+offset_top = 30.0
+offset_right = -21.0
+offset_bottom = 21.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/fill = SubResource("StyleBoxFlat_dd0ac")
+value = 50.0
+show_percentage = false
+
 [node name="CameraShake" type="Node3D" parent="." unique_id=508698861]
 script = ExtResource("4_htcer")
 
@@ -65,3 +108,21 @@ fov = 80.0
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.035, -0.31, 0.428)
 camera_shake = NodePath("../..")
+
+[node name="PlayerInteractArea" type="Area3D" parent="." unique_id=1831856466]
+collision_layer = 0
+collision_mask = 1024
+script = ExtResource("6_dd0ac")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerInteractArea" unique_id=1761198729]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8249617, 0)
+shape = SubResource("SphereShape3D_htcer")
+debug_color = Color(5.2943824e-07, 0.6460847, 0.25257465, 0.41960785)
+
+[node name="Timer" type="Timer" parent="PlayerInteractArea" unique_id=1546922768]
+wait_time = 0.2
+autostart = true
+
+[connection signal="area_entered" from="PlayerInteractArea" to="PlayerInteractArea" method="_on_area_entered"]
+[connection signal="area_exited" from="PlayerInteractArea" to="PlayerInteractArea" method="_on_area_exited"]
+[connection signal="timeout" from="PlayerInteractArea/Timer" to="PlayerInteractArea" method="_on_timer_timeout"]

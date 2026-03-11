@@ -10,7 +10,8 @@
 [ext_resource type="PackedScene" uid="uid://bi157jsroo68i" path="res://Scenes/Enemy/Characters/mage_enemy.tscn" id="8_h4fw4"]
 [ext_resource type="PackedScene" uid="uid://dsj1w6h618sxx" path="res://Scenes/grenade.tscn" id="9_h4fw4"]
 [ext_resource type="PackedScene" uid="uid://ddtsuacw68rfp" path="res://Scenes/Enemy/Characters/barbarian_enemy.tscn" id="9_ldgsr"]
-[ext_resource type="PackedScene" uid="uid://dcmcksds7sv0" path="res://Scenes/emerald_model.tscn" id="11_o5yvi"]
+[ext_resource type="PackedScene" uid="uid://b36nywsq2d244" path="res://Scenes/emerald_repository.tscn" id="11_o5yvi"]
+[ext_resource type="Script" uid="uid://d30dfdaii5i5m" path="res://Scripts/emerald_energy.gd" id="12_rku1e"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_h4fw4"]
 render_priority = 0
@@ -83,6 +84,12 @@ camera_shake = NodePath("Player/CameraShake")
 [node name="Player" parent="." unique_id=684757255 instance=ExtResource("2_qxrlw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.6200383, 20.194138)
 
+[node name="EnergyProgress" parent="Player/PlayerCanvasLayer" parent_id_path=PackedInt32Array(684757255, 680215882) index="2" unique_id=1424602930 node_paths=PackedStringArray("emerald_energy")]
+emerald_energy = NodePath("../../../EmeraldEnergy")
+
+[node name="PlayerInteractArea" parent="Player" index="3" unique_id=1831856466 node_paths=PackedStringArray("emerald_energy")]
+emerald_energy = NodePath("../../EmeraldEnergy")
+
 [node name="Sky" parent="." unique_id=248369870 instance=ExtResource("3_3dryh")]
 
 [node name="Capsule" type="MeshInstance3D" parent="." unique_id=490529191]
@@ -126,7 +133,10 @@ mesh = SubResource("PlaneMesh_rku1e")
 [node name="Grenade" parent="." unique_id=1547832993 instance=ExtResource("9_h4fw4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.774643, 4.1596985, -12.640439)
 
-[node name="Emerald" parent="." unique_id=609024041 instance=ExtResource("11_o5yvi")]
-transform = Transform3D(0.9968499, 0.07931164, 0, -0.07931164, 0.9968499, 0, 0, 0, 1, -10.726798, 3.0360632, 0)
+[node name="EmeraldRepository" parent="." unique_id=1017219921 instance=ExtResource("11_o5yvi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1750312, -18.633984)
+
+[node name="EmeraldEnergy" type="Node3D" parent="." unique_id=216816142]
+script = ExtResource("12_rku1e")
 
 [editable path="Player"]

@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://b36nywsq2d244"]
+
+[ext_resource type="Script" uid="uid://dyrdmwddifpgo" path="res://Scripts/emerald_repository.gd" id="1_pc15h"]
+[ext_resource type="PackedScene" uid="uid://dcmcksds7sv0" path="res://Scenes/emerald_model.tscn" id="1_x88ex"]
+[ext_resource type="Script" uid="uid://d274udriisgxa" path="res://Scripts/interact_area.gd" id="2_r66k1"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_r66k1"]
+radius = 1.3527067
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_x88ex"]
+radius = 3.5273037
+
+[node name="EmeraldRepository" type="StaticBody3D" unique_id=1017219921]
+collision_mask = 15
+script = ExtResource("1_pc15h")
+
+[node name="EmeraldModel" parent="." unique_id=609024041 instance=ExtResource("1_x88ex")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3793218, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=356702353]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0896161, 0)
+shape = SubResource("SphereShape3D_r66k1")
+
+[node name="InteractArea" type="Area3D" parent="." unique_id=1190384293 groups=["EmeraldRepository"]]
+unique_name_in_owner = true
+collision_layer = 1536
+collision_mask = 0
+script = ExtResource("2_r66k1")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractArea" unique_id=382736666]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1690807, 0)
+shape = SubResource("SphereShape3D_x88ex")
+debug_color = Color(0, 0.6452975, 0.26969075, 0.41960785)
+
+[connection signal="interacted" from="InteractArea" to="." method="_on_interact_area_interacted"]

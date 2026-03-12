@@ -13,6 +13,9 @@ radius = 3.5273037
 [sub_resource type="SphereShape3D" id="SphereShape3D_pc15h"]
 radius = 9.745677
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_qms4a"]
+radius = 1.3667659
+
 [node name="EmeraldRepository" type="StaticBody3D" unique_id=1017219921 groups=["EmeraldRepository"]]
 collision_mask = 15
 script = ExtResource("1_pc15h")
@@ -28,7 +31,7 @@ shape = SubResource("SphereShape3D_r66k1")
 [node name="InteractArea" type="Area3D" parent="." unique_id=1190384293]
 unique_name_in_owner = true
 collision_layer = 1536
-collision_mask = 384
+collision_mask = 0
 script = ExtResource("2_r66k1")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="InteractArea" unique_id=382736666]
@@ -49,7 +52,16 @@ collision_mask = 8
 shape = SubResource("SphereShape3D_pc15h")
 debug_color = Color(0.6399386, 0.3571484, 0.96583885, 0.41960785)
 
-[connection signal="area_entered" from="InteractArea" to="InteractArea" method="_on_area_entered"]
+[node name="HitArea" type="Area3D" parent="." unique_id=579309053]
+collision_layer = 0
+collision_mask = 384
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HitArea" unique_id=997627290]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1690807, 0)
+shape = SubResource("SphereShape3D_qms4a")
+debug_color = Color(0.9571127, 2.8878452e-07, 0.551798, 0.41960785)
+
 [connection signal="interacted" from="InteractArea" to="." method="_on_interact_area_interacted"]
 [connection signal="timeout" from="RegenDelayTimer" to="." method="_on_regen_delay_timer_timeout"]
 [connection signal="body_entered" from="DiscoverArea" to="." method="_on_discover_area_body_entered"]
+[connection signal="area_entered" from="HitArea" to="InteractArea" method="_on_hit_area_area_entered"]

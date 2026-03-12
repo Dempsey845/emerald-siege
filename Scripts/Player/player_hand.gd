@@ -38,7 +38,7 @@ func change_blaster(type: BlasterType):
 	add_child(current_blaster)
 
 func _process(_delta: float) -> void:
-	if can_shoot and Input.is_action_pressed("shoot") and emerald_energy.energy > energy_consumption_per_bullet:
+	if can_shoot and Input.is_action_pressed("shoot") and emerald_energy.energy >= energy_consumption_per_bullet:
 		shoot_projectile()
 		emerald_energy.take_energy(energy_consumption_per_bullet)
 		arms.fire(current_blaster.recoil_magnitude, current_blaster.bullets_per_second)

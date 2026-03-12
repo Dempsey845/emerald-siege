@@ -3,7 +3,6 @@
 [ext_resource type="Shader" uid="uid://hc4nj6lxtr66" path="res://addons/flexible_toon_shader/flexible_toon.gdshader" id="1_005no"]
 
 [resource]
-resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("1_005no")
 shader_parameter/albedo = Color(0.1428257, 1, 0.5847179, 1)

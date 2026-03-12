@@ -8,7 +8,7 @@ var initial_rim_color: Color
 var darkened_rim_color := Color.BLACK
 
 var initial_albedo: Color
-var darkened_albedo := Color(0.0, 0.843, 0.478)
+var darkened_albedo := Color(0.0, 0.499, 0.274, 1.0)
 
 var min_specular = 0.05
 var max_specular = 1.0

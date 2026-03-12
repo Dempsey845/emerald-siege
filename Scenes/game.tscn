@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://bi157jsroo68i" path="res://Scenes/Enemy/Characters/mage_enemy.tscn" id="8_h4fw4"]
 [ext_resource type="PackedScene" uid="uid://ddtsuacw68rfp" path="res://Scenes/Enemy/Characters/barbarian_enemy.tscn" id="9_ldgsr"]
 [ext_resource type="PackedScene" uid="uid://b36nywsq2d244" path="res://Scenes/emerald_repository.tscn" id="11_o5yvi"]
+[ext_resource type="Script" uid="uid://c4m3qwn4xuh8o" path="res://Scripts/Enemy/enemy_spawner.gd" id="12_rfjv2"]
 [ext_resource type="Script" uid="uid://d30dfdaii5i5m" path="res://Scripts/emerald_energy.gd" id="12_rku1e"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_h4fw4"]
@@ -76,6 +77,14 @@ lightmap_size_hint = Vector2i(2502, 2502)
 material = SubResource("ShaderMaterial_o5yvi")
 size = Vector2(500, 500)
 
+[sub_resource type="Curve3D" id="Curve3D_1phco"]
+closed = true
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0.638361, 0, 30.17636, 0, 0, 0, 0, 0, 0, 5.2246113, 0, 27.992426, 0, 0, 0, 0, 0, 0, 12.540781, 0, 26.354479, 0, 0, 0, 0, 0, 0, 21.276503, 0, 24.388939, 0, 0, 0, 0, 0, 0, 27.6099, 0, 15.216432, 0, 0, 0, 0, 0, 0, 32.52375, 0, 10.739374, 0, 0, 0, 0, 0, 0, 32.74214, 0, 5.8255305, 0, 0, 0, 0, 0, 0, 34.037506, 0, -2.0569036, 0, 0, 0, 0, 0, 0, 30.324823, 0, -8.062714, 0, 0, 0, 0, 0, 0, 20.169546, 0, -14.7237015, 0, 0, 0, 0, 0, 0, 28.468485, 0, -25.315765, 0, 0, 0, 0, 0, 0, 21.557419, 0, -35.37197, 0, 0, 0, 0, 0, 0, 13.866062, 0.009384155, -47.330433, 0, 0, 0, 0, 0, 0, 8.925353, 0.012706757, -51.613174, 0, 0, 0, 0, 0, 0, 3.0256224, 0.018054962, -58.463234, 0, 0, 0, 0, 0, 0, -13.445398, 0.020187378, -61.49402, 0, 0, 0, 0, 0, 0, -21.378092, 0.020809174, -62.451263, 0, 0, 0, 0, 0, 0, -26.711483, 0.018222809, -59.318993, 0, 0, 0, 0, 0, 0, -36.993088, 0.018932343, -60.43952, 0, 0, 0, 0, 0, 0, -43.617188, 0.010105133, -49.49386, 0, 0, 0, 0, 0, 0, -53.191887, 0.0072784424, -46.144386, 0, 0, 0, 0, 0, 0, -52.206985, -0.0017242432, -34.808655, 0, 0, 0, 0, 0, 0, -57.282898, -0.011405945, -22.753939, 0, 0, 0, 0, 0, 0, -50.999992, -0.020008087, -11.810612, 0, 0, 0, 0, 0, 0, -48.15161, -0.020019531, -5.0625715, 0, 0, 0, 0, 0, 0, -18.660545, -0.020019531, 32.382343, 0, 0, 0, 0, 0, 0, -7.5233727, -0.020019531, 34.51724),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 27
+
 [node name="Game" type="Node3D" unique_id=151187711 node_paths=PackedStringArray("camera_shake", "player")]
 script = ExtResource("1_o5yvi")
 camera_shake = NodePath("Player/CameraShake")
@@ -130,5 +139,24 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1750312, -16.30952)
 [node name="EmeraldEnergy" type="Node3D" parent="." unique_id=216816142]
 unique_name_in_owner = true
 script = ExtResource("12_rku1e")
+
+[node name="EnemySpawner" type="Node3D" parent="." unique_id=181184685 node_paths=PackedStringArray("enemy_container")]
+script = ExtResource("12_rfjv2")
+enemy_container = NodePath("../NavigationRegion3D/Enemies")
+
+[node name="Path3D" type="Path3D" parent="EnemySpawner" unique_id=4876437]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.52997303, 0)
+curve = SubResource("Curve3D_1phco")
+debug_custom_color = Color(0, 0.86851346, 0.7158196, 1)
+
+[node name="PathProgress" type="PathFollow3D" parent="EnemySpawner/Path3D" unique_id=871659034]
+unique_name_in_owner = true
+transform = Transform3D(0.42992875, 0, -0.9028502, 0, 0.9999848, 0, 0.902849, 0, 0.42992932, 0.638361, 0, 30.17636)
+
+[node name="SpawnTimer" type="Timer" parent="EnemySpawner" unique_id=947027877]
+wait_time = 2.0
+autostart = true
+
+[connection signal="timeout" from="EnemySpawner/SpawnTimer" to="EnemySpawner" method="_on_spawn_timer_timeout"]
 
 [editable path="Player"]

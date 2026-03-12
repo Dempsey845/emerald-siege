@@ -1,6 +1,7 @@
 class_name MeleeWeapon extends Node3D
 
 @export var damage: int = 1
+@export var energy_damage: float = 15.0
 @export var enemy_character: EnemyCharacter
 @export var weapon_mesh: MeshInstance3D
 
@@ -56,10 +57,16 @@ func _check_hit():
 func check_hit() -> bool:
 	var overlapping_bodies = hit_area.get_overlapping_bodies()
 	
-	if overlapping_bodies.size() > 0 and overlapping_bodies[0].is_in_group("Player"):
-		var player: Player = overlapping_bodies[0]
-		player.take_damage(damage)
-		return true
+	if overlapping_bodies.size() > 0:
+		print("Overlapping " + overlapping_bodies[0].name)
+		if overlapping_bodies[0].is_in_group("Player"):
+			var player: Player = overlapping_bodies[0]
+			player.take_damage(damage)
+			return true
+		elif overlapping_bodies[0].is_in_group("EmeraldRepository"):
+			var repo: EmeraldRepository = overlapping_bodies[0]
+			repo.take_energy(energy_damage)
+			return true
 		
 	return false
 

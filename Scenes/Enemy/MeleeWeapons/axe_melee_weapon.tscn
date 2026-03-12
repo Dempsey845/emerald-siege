@@ -13,7 +13,10 @@ transform = Transform3D(-0.9999977, -0.0021387062, 4.8872782e-05, -0.0020570764,
 [node name="axe_1handed" parent="axe_1handed" index="0" unique_id=1879331904]
 material_overlay = ExtResource("3_ss28d")
 
-[node name="CollisionShape3D" parent="HitArea" parent_id_path=PackedInt32Array(682105868) index="0" unique_id=145051809]
+[node name="HitArea" parent="." index="1" unique_id=682105868]
+collision_mask = 5
+
+[node name="CollisionShape3D" parent="HitArea" index="0" unique_id=145051809]
 transform = Transform3D(-4.3887574e-08, 1, -2.4854671e-08, -1, -4.372727e-08, -7.348717e-10, -1.4742909e-08, 1.3911631e-08, 1, 0.95294553, 0.62464106, -0.23935331)
 
 [editable path="axe_1handed"]

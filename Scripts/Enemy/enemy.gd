@@ -13,14 +13,16 @@ enum AI_Type
 }
 
 @export var ai_type: AI_Type = AI_Type.Chase
-@export var target_node: Node3D
 @export var attack_agent: AttackAgent
 @export var radial_agent: RadialAgent
 
 @onready var navigation_agent: NavigationAgent3D = %NavigationAgent3D
 
+var target_node: Node3D
 var health := 3
 var alive := true
+
+var direction: Vector3
 
 func _ready() -> void:
 	await get_tree().create_timer(0.2).timeout
@@ -33,7 +35,7 @@ func _physics_process(delta: float) -> void:
 		navigation_agent.set_velocity(Vector3.ZERO)
 		velocity = Vector3.ZERO
 
-		_look_at_target_node(delta)
+		look_at_target_node(delta)
 		
 		if attack_agent:
 			attack_agent.attack_melee()
@@ -41,12 +43,12 @@ func _physics_process(delta: float) -> void:
 		return
 
 	var next_pos = navigation_agent.get_next_path_position()
-	var direction = global_position.direction_to(next_pos)
+	direction = global_position.direction_to(next_pos)
 	
 	if ai_type == AI_Type.Radial:
 		radial_agent.process_radial(delta)
 	elif ai_type == AI_Type.Chase:
-		look_at_direction(direction, delta)
+		look_at_direction(delta)
 		
 		if attack_agent:
 			attack_agent.attack_ranged()
@@ -63,13 +65,13 @@ func get_distance_to_target_node_sq() -> float:
 	
 	return global_position.distance_squared_to(target_node.global_position)
 
-func _look_at_target_node(delta: float):
+func look_at_target_node(delta: float):
 	var look_dir = global_position.direction_to(target_node.global_position)
 	if look_dir.length() > 0.01:
 		var target_angle = atan2(look_dir.x, look_dir.z)
 		rotation.y = lerp_angle(rotation.y, target_angle, delta * ROTATION_SPEED)
 
-func look_at_direction(direction: Vector3, delta: float):
+func look_at_direction(delta: float):
 	if direction.length() > 0.01:
 		var target_angle = atan2(direction.x, direction.z)
 		rotation.y = lerp_angle(rotation.y, target_angle, delta * ROTATION_SPEED)

@@ -10,7 +10,10 @@ radius = 1.3527067
 [sub_resource type="SphereShape3D" id="SphereShape3D_x88ex"]
 radius = 3.5273037
 
-[node name="EmeraldRepository" type="StaticBody3D" unique_id=1017219921]
+[sub_resource type="SphereShape3D" id="SphereShape3D_pc15h"]
+radius = 9.745677
+
+[node name="EmeraldRepository" type="StaticBody3D" unique_id=1017219921 groups=["EmeraldRepository"]]
 collision_mask = 15
 script = ExtResource("1_pc15h")
 
@@ -38,6 +41,15 @@ unique_name_in_owner = true
 wait_time = 10.0
 one_shot = true
 
+[node name="DiscoverArea" type="Area3D" parent="." unique_id=459130204]
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DiscoverArea" unique_id=1962602682]
+shape = SubResource("SphereShape3D_pc15h")
+debug_color = Color(0.6399386, 0.3571484, 0.96583885, 0.41960785)
+
 [connection signal="area_entered" from="InteractArea" to="InteractArea" method="_on_area_entered"]
 [connection signal="interacted" from="InteractArea" to="." method="_on_interact_area_interacted"]
 [connection signal="timeout" from="RegenDelayTimer" to="." method="_on_regen_delay_timer_timeout"]
+[connection signal="body_entered" from="DiscoverArea" to="." method="_on_discover_area_body_entered"]

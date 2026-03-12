@@ -49,3 +49,14 @@ func take_energy(amount: float):
 
 func _on_regen_delay_timer_timeout() -> void:
 	can_regen = true
+
+
+func _on_discover_area_body_entered(body: Node3D) -> void:
+	if not body.is_in_group("Enemy"):
+		return
+	
+	var grab_attention = randi_range(0, 2) == 0
+	
+	if grab_attention:
+		var enemy_target_agent: EnemyTargetAgent = body.get_node("EnemyTargetAgent")
+		enemy_target_agent.change_target(EnemyTargetAgent.TargetType.EmeraldRepository, self)

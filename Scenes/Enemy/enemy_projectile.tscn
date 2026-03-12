@@ -163,7 +163,8 @@ material = SubResource("StandardMaterial3D_ijbhw")
 sections = 2
 curve = SubResource("Curve_v3hqh")
 
-[node name="EnemyProjectile" unique_id=223916411 instance=ExtResource("1_gjudp")]
+[node name="EnemyProjectile" unique_id=223916411 groups=["EnemyProjectile"] instance=ExtResource("1_gjudp")]
+collision_layer = 128
 collision_mask = 15
 shot_from = 1
 

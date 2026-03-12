@@ -29,6 +29,7 @@ enabled=PackedStringArray("res://addons/terrain_3d/plugin.cfg")
 Enemy=""
 Player=""
 EmeraldRepository=""
+EnemyProjectile=""
 
 [input]
 
@@ -84,6 +85,8 @@ charge={
 3d_physics/layer_2="Terrain"
 3d_physics/layer_3="Player"
 3d_physics/layer_4="Enemy"
+3d_physics/layer_8="EnemyProjectile"
+3d_physics/layer_9="PlayerProjectile"
 3d_physics/layer_10="InteractArea"
 3d_physics/layer_11="EmeraldInteractArea"
 

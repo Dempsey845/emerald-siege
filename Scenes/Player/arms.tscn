@@ -196,7 +196,7 @@ blend_shape_mode = 0
 script = ExtResource("1_in0qx")
 
 [node name="Arms_001" type="Node3D" parent="." unique_id=2145211029]
-transform = Transform3D(-0.9999998, 0, 8.742276e-08, 0, 1, 0, -8.742276e-08, 0, -0.9999998, 0, 0, 0)
+transform = Transform3D(-0.9999997, 0, 8.7422755e-08, 0, 1, 0, -8.742275e-08, 0, -0.99999976, 0, 0, 0)
 
 [node name="Skeleton3D" type="Skeleton3D" parent="Arms_001" unique_id=154038172]
 bones/0/name = "Root"
@@ -495,16 +495,6 @@ script = ExtResource("5_gaw5c")
 arms = NodePath("../../..")
 
 [node name="BlasterPistol" parent="Arms_001/Skeleton3D/PlayerHand" unique_id=257926627 instance=ExtResource("6_gaw5c")]
-
-[node name="LeftHandTarget" type="Node3D" parent="Arms_001/Skeleton3D/PlayerHand" unique_id=974275327]
-transform = Transform3D(0.9175377, 0.39152408, 0.06952098, -0.39727515, 0.910132, 0.11761162, -0.017225415, -0.13553202, 0.99062324, -0.09985456, 0.033883877, 0.008480514)
-
-[node name="HandL_IK" type="SkeletonIK3D" parent="Arms_001/Skeleton3D" unique_id=1342046755]
-unique_name_in_owner = true
-active = false
-root_bone = &"Upper_Arm.L"
-tip_bone = &"Hand.L"
-target_node = NodePath("../PlayerHand/LeftHandTarget")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1091555106]
 unique_name_in_owner = true

@@ -124,7 +124,7 @@ fov = 65.0
 
 [node name="Arms" parent="CameraShake/Camera3D" unique_id=1419344825 node_paths=PackedStringArray("camera_shake") instance=ExtResource("3_6t5aa")]
 unique_name_in_owner = true
-transform = Transform3D(1.9992026, 0, 0.056471355, 0.010708475, 1.9637123, -0.37910223, -0.055446748, 0.3792534, 1.9629298, -0.06603789, -0.6195731, 0.55114543)
+transform = Transform3D(1.9999998, 0, 0, 0, 1.9999998, 0, 0, 0, 2, -0.11179149, -0.62, 0.29855525)
 camera_shake = NodePath("../..")
 
 [node name="PlayerInteractArea" type="Area3D" parent="." unique_id=1831856466]

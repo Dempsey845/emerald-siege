@@ -3,6 +3,9 @@
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_eqeij"]
 animation = &"Custom/idle"
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_7y1rf"]
+animation = &"Custom/spawn_ground"
+
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_18qq7"]
 animation = &"Custom/run"
 
@@ -33,12 +36,14 @@ filters = ["Rig_Medium/Skeleton3D:chest", "Rig_Medium/Skeleton3D:head", "Rig_Med
 
 [sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_c6hlm"]
 
+[sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_4uq57"]
+
 [resource]
 resource_local_to_scene = true
-graph_offset = Vector2(2134.118, 433.75226)
+graph_offset = Vector2(887.90686, 268.0221)
 nodes/output/position = Vector2(4100, 620)
 nodes/AttackAnimation/node = SubResource("AnimationNodeAnimation_qr7cd")
-nodes/AttackAnimation/position = Vector2(1900, 900)
+nodes/AttackAnimation/position = Vector2(1920, 1020)
 nodes/AttackOneShot/node = SubResource("AnimationNodeOneShot_70yeh")
 nodes/AttackOneShot/position = Vector2(2340, 840)
 nodes/Animation/node = SubResource("AnimationNodeAnimation_18qq7")
@@ -59,4 +64,8 @@ nodes/DeathPoseBlend/node = SubResource("AnimationNodeBlend2_7y1rf")
 nodes/DeathPoseBlend/position = Vector2(3840, 620)
 nodes/DeathPoseAnimation/node = SubResource("AnimationNodeAnimation_t2uir")
 nodes/DeathPoseAnimation/position = Vector2(3600, 860)
-node_connections = [&"output", 0, &"DeathPoseBlend", &"AttackOneShot", 0, &"IdleToRun", &"AttackOneShot", 1, &"AttackAnimation", &"IdleToRun", 0, &"Animation 2", &"IdleToRun", 1, &"Animation", &"HitOneShot", 0, &"AttackOneShot", &"HitOneShot", 1, &"HitAnimation", &"DeathOneShot", 0, &"HitOneShot", &"DeathOneShot", 1, &"DeathAnimation", &"DeathPoseBlend", 0, &"DeathOneShot", &"DeathPoseBlend", 1, &"DeathPoseAnimation"]
+nodes/SpawnOneShot/node = SubResource("AnimationNodeOneShot_4uq57")
+nodes/SpawnOneShot/position = Vector2(2146.2344, 530.0366)
+"nodes/Animation 3/node" = SubResource("AnimationNodeAnimation_7y1rf")
+"nodes/Animation 3/position" = Vector2(1780, 780)
+node_connections = [&"output", 0, &"DeathPoseBlend", &"AttackOneShot", 0, &"SpawnOneShot", &"AttackOneShot", 1, &"AttackAnimation", &"IdleToRun", 0, &"Animation 2", &"IdleToRun", 1, &"Animation", &"HitOneShot", 0, &"AttackOneShot", &"HitOneShot", 1, &"HitAnimation", &"DeathOneShot", 0, &"HitOneShot", &"DeathOneShot", 1, &"DeathAnimation", &"DeathPoseBlend", 0, &"DeathOneShot", &"DeathPoseBlend", 1, &"DeathPoseAnimation", &"SpawnOneShot", 0, &"IdleToRun", &"SpawnOneShot", 1, &"Animation 3"]

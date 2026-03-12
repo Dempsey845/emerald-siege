@@ -26,7 +26,8 @@ const ENEMY_DISSOLVE = preload("res://Shaders/enemy_dissolve.tres")
 func _ready() -> void:
 	get_parent().damage_taken.connect(trigger_hit)
 	animation_tree.tree_root.get_node("AttackAnimation").animation = attack_animation_name
-	
+	animation_tree.set("parameters/SpawnOneShot/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
+
 
 func _process(delta: float) -> void:
 	# Update hit shader effect

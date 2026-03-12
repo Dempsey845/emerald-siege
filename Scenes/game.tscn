@@ -91,7 +91,7 @@ camera_shake = NodePath("Player/CameraShake")
 player = NodePath("Player")
 
 [node name="Player" parent="." unique_id=684757255 instance=ExtResource("2_qxrlw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.3623102, -12.151865)
+transform = Transform3D(-0.50000006, 0, 0.8660254, 0, 1, 0, -0.8660254, 0, -0.50000006, 0, 2.3623102, -12.151865)
 
 [node name="EnergyProgress" parent="Player/PlayerCanvasLayer" parent_id_path=PackedInt32Array(684757255, 680215882) index="3" unique_id=1424602930 node_paths=PackedStringArray("emerald_energy")]
 emerald_energy = NodePath("../../../EmeraldEnergy")

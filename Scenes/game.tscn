@@ -136,6 +136,21 @@ mesh = SubResource("PlaneMesh_rku1e")
 [node name="EmeraldRepository" parent="." unique_id=1017219921 instance=ExtResource("11_o5yvi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1750312, -16.30952)
 
+[node name="EmeraldRepository2" parent="." unique_id=397675556 instance=ExtResource("11_o5yvi")]
+transform = Transform3D(0.8777239, 0, -0.47916684, 0, 1, 0, 0.47916684, 0, 0.8777239, 10.418732, 1.1750312, -16.30952)
+
+[node name="EmeraldRepository4" parent="." unique_id=657690558 instance=ExtResource("11_o5yvi")]
+transform = Transform3D(0.8777239, 0, -0.47916684, 0, 1, 0, 0.47916684, 0, 0.8777239, -33.285774, 2.1772208, -27.365726)
+
+[node name="EmeraldRepository5" parent="." unique_id=2006872338 instance=ExtResource("11_o5yvi")]
+transform = Transform3D(0.8777238, 0, -0.4791668, -0.049795464, 0.9945856, -0.09121388, 0.4765724, 0.10392092, 0.8729715, -20.52362, 2.461411, 19.555574)
+
+[node name="EmeraldRepository6" parent="." unique_id=1190138022 instance=ExtResource("11_o5yvi")]
+transform = Transform3D(0.8777238, 0, -0.4791668, -0.049795464, 0.9945856, -0.09121388, 0.4765724, 0.10392092, 0.8729715, 1.3824806, 2.219431, 18.300959)
+
+[node name="EmeraldRepository3" parent="." unique_id=592159717 instance=ExtResource("11_o5yvi")]
+transform = Transform3D(0.5865058, -0.14458096, 0.7969363, 0.26251933, 0.9647555, -0.018174356, -0.76622087, 0.21987055, 0.60378987, -2.0025806, 1.817648, -39.432396)
+
 [node name="EmeraldEnergy" type="Node3D" parent="." unique_id=216816142]
 unique_name_in_owner = true
 script = ExtResource("12_rku1e")
@@ -154,7 +169,7 @@ unique_name_in_owner = true
 transform = Transform3D(0.42992875, 0, -0.9028502, 0, 0.9999848, 0, 0.902849, 0, 0.42992932, 0.638361, 0, 30.17636)
 
 [node name="SpawnTimer" type="Timer" parent="EnemySpawner" unique_id=947027877]
-wait_time = 3.0
+wait_time = 100.0
 autostart = true
 
 [connection signal="timeout" from="EnemySpawner/SpawnTimer" to="EnemySpawner" method="_on_spawn_timer_timeout"]

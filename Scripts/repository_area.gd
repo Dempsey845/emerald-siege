@@ -1,0 +1,1 @@
+class_name RepositoryArea extends Area3D

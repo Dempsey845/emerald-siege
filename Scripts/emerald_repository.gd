@@ -2,67 +2,78 @@ class_name EmeraldRepository extends StaticBody3D
 
 signal energy_changed(energy_value: float)
 
-@onready var regen_delay_timer: Timer = %RegenDelayTimer
+const EXPLOSION = preload("res://Scenes/explosion.tscn")
+
+@onready var absorb_cooldown_timer: Timer = %AbsorbCooldownTimer
 
 var energy := 0.0
 var max_energy := 100.0
+var overload_energy := 200.0
 
-var can_regen := true
+var regen_speed := 2.0
+var regen_delay := 1.0
+var regen_delay_timer := 0.0
 
-var regen_speed := 10.0
-
-var can_absorb := false
-var absorb_amount := 35.0
+var absorb_amount := 0.0
+var min_absorb_amount := 8.0
+var max_absorb_amount := 20.0
 
 func _ready() -> void:
 	set_energy(randi_range(0, 100))
 
-func _on_interact_area_interacted() -> void:
-	print("Interacting with repo!")
-
 func _process(delta: float) -> void:
-	if not can_regen:
-		return
-	
-	add_energy(delta * regen_speed)
+	if regen_delay_timer == 0.0 and energy < max_energy:
+		add_energy(delta * regen_speed)
+
+	_handle_regen_delay(delta)
 
 func add_energy(amount: float):
-	energy += amount
+	var new_energy = energy + amount
 	
-	if energy > max_energy:
-		energy = max_energy
-		can_absorb = true
+	if energy > overload_energy:
+		explode()
+		new_energy = 0.0
+	elif energy > max_energy:
+		absorb_cooldown_timer.stop()
+		
+	set_energy(new_energy)
 		
 	energy_changed.emit(energy)
 	
 func take_energy(amount: float):
-	can_regen = false
+	var new_energy = energy - amount
 	
-	energy -= amount
+	# Restarting the delay
+	regen_delay_timer = 0.01
 	
-	if energy < 5.0:
-		energy = 0.0
+	if new_energy < 0.0:
+		new_energy = 0.0
 		
-		if regen_delay_timer.is_stopped():
-			regen_delay_timer.start()
-			can_absorb = false
-		
+	set_energy(new_energy)
+	
 	energy_changed.emit(energy)
 
 func set_energy(value: float):
 	energy = value
+	absorb_amount = min(max(value, min_absorb_amount), max_absorb_amount) if value > 0.5 else 0.0
+	if energy < min_absorb_amount and absorb_cooldown_timer.is_stopped():
+		absorb_cooldown_timer.start()
 	energy_changed.emit(value)
 
-func _on_regen_delay_timer_timeout() -> void:
-	can_regen = true
-
-
-func _on_discover_area_body_entered(body: Node3D) -> void:
-	if not body.is_in_group("Enemy"):
+func explode():
+	var explosion = EXPLOSION.instantiate()
+	add_child(explosion)
+	explosion.global_position = global_position
+	
+func _handle_regen_delay(delta: float):
+	if regen_delay_timer == 0.0:
 		return
 	
-	var grab_attention = randi_range(0, 2) == 0
+	regen_delay_timer += delta
 	
-	if grab_attention:
-		var enemy_target_agent: EnemyTargetAgent = body.get_node("EnemyTargetAgent")
-		enemy_target_agent.change_target(EnemyTargetAgent.TargetType.EmeraldRepository, self)
+	if regen_delay_timer > regen_delay:
+		regen_delay_timer = 0.0
+
+
+func can_absorb():
+	return energy > min_absorb_amount and absorb_cooldown_timer.is_stopped() 

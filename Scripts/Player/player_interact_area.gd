@@ -10,20 +10,22 @@ var areas: Array[Area3D]
 var current_emerald_area: Area3D
 var current_emerald_repo: EmeraldRepository
 
+var charge := false
+
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("interact") and areas.size() > 0:
-		for area in areas:
-			area.interact()
+	charge = Input.is_action_pressed("charge") and current_emerald_area
 	
-	if Input.is_action_pressed("charge") and current_emerald_area:
+	if charge:
 		_handle_charge(delta)
-	elif Input.is_action_just_released("charge") and current_emerald_repo:
+	
+		
+	if Input.is_action_just_released("charge") and current_emerald_repo:
 		absorb_ended.emit()
  
 func _handle_charge(delta: float):
-	if current_emerald_repo.can_absorb and player_energy.energy < player_energy.max_energy:
-		player_energy.add_energy(delta * current_emerald_repo.absorb_amount)
-		current_emerald_repo.take_energy(delta * current_emerald_repo.absorb_amount)
+	if player_energy.energy < player_energy.max_energy and current_emerald_repo.can_absorb():
+		player_energy.add_energy(current_emerald_repo.absorb_amount * delta)
+		current_emerald_repo.take_energy(current_emerald_repo.absorb_amount * delta)
 		absorb_started.emit()
 	else:
 		absorb_ended.emit()

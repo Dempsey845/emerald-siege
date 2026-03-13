@@ -2,7 +2,9 @@
 
 [ext_resource type="Script" uid="uid://dyrdmwddifpgo" path="res://Scripts/emerald_repository.gd" id="1_pc15h"]
 [ext_resource type="PackedScene" uid="uid://dcmcksds7sv0" path="res://Scenes/emerald_model.tscn" id="1_x88ex"]
-[ext_resource type="Script" uid="uid://d274udriisgxa" path="res://Scripts/interact_area.gd" id="2_r66k1"]
+[ext_resource type="Script" uid="uid://d274udriisgxa" path="res://Scripts/repository_area.gd" id="2_r66k1"]
+[ext_resource type="Script" uid="uid://cny8plulsimda" path="res://Scripts/repository_discover_area.gd" id="4_qms4a"]
+[ext_resource type="Script" uid="uid://cc3srqq0wbypn" path="res://Scripts/repository_hit_area.gd" id="5_7qvty"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_r66k1"]
 radius = 1.3527067
@@ -28,40 +30,41 @@ emerald_repository = NodePath("..")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0896161, 0)
 shape = SubResource("SphereShape3D_r66k1")
 
-[node name="InteractArea" type="Area3D" parent="." unique_id=1190384293]
+[node name="RepositoryArea" type="Area3D" parent="." unique_id=1190384293]
 unique_name_in_owner = true
-collision_layer = 1536
+collision_layer = 1024
 collision_mask = 0
 script = ExtResource("2_r66k1")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractArea" unique_id=382736666]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RepositoryArea" unique_id=382736666]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1690807, 0)
 shape = SubResource("SphereShape3D_x88ex")
 debug_color = Color(0, 0.6452975, 0.26969075, 0.41960785)
 
-[node name="RegenDelayTimer" type="Timer" parent="." unique_id=232735314]
-unique_name_in_owner = true
-wait_time = 10.0
-one_shot = true
-
-[node name="DiscoverArea" type="Area3D" parent="." unique_id=459130204]
+[node name="RepositoryDiscoverArea" type="Area3D" parent="." unique_id=459130204]
 collision_layer = 0
 collision_mask = 8
+script = ExtResource("4_qms4a")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="DiscoverArea" unique_id=1962602682]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RepositoryDiscoverArea" unique_id=1962602682]
 shape = SubResource("SphereShape3D_pc15h")
 debug_color = Color(0.6399386, 0.3571484, 0.96583885, 0.41960785)
 
-[node name="HitArea" type="Area3D" parent="." unique_id=579309053]
+[node name="RepositoryHitArea" type="Area3D" parent="." unique_id=579309053]
 collision_layer = 0
 collision_mask = 384
+script = ExtResource("5_7qvty")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="HitArea" unique_id=997627290]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RepositoryHitArea" unique_id=997627290]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1690807, 0)
 shape = SubResource("SphereShape3D_qms4a")
 debug_color = Color(0.9571127, 2.8878452e-07, 0.551798, 0.41960785)
 
-[connection signal="interacted" from="InteractArea" to="." method="_on_interact_area_interacted"]
-[connection signal="timeout" from="RegenDelayTimer" to="." method="_on_regen_delay_timer_timeout"]
-[connection signal="body_entered" from="DiscoverArea" to="." method="_on_discover_area_body_entered"]
-[connection signal="area_entered" from="HitArea" to="InteractArea" method="_on_hit_area_area_entered"]
+[node name="AbsorbCooldownTimer" type="Timer" parent="." unique_id=2004580643]
+unique_name_in_owner = true
+wait_time = 20.0
+one_shot = true
+
+[connection signal="body_entered" from="RepositoryDiscoverArea" to="RepositoryDiscoverArea" method="_on_body_entered"]
+[connection signal="area_entered" from="RepositoryHitArea" to="RepositoryHitArea" method="_on_area_entered"]
+[connection signal="timeout" from="AbsorbCooldownTimer" to="." method="_on_absorb_cooldown_timer_timeout"]

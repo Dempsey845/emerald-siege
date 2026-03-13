@@ -9,5 +9,5 @@ func check_hit():
 		for body in bodies:
 			if body.has_method("take_damage"):
 				body.take_damage(damage)
-			if emerald_energy > 0.0 and body.has_method("add_energy"):
-				body.add_energy(emerald_energy)
+			#if emerald_energy > 0.0 and body.has_method("add_energy"):
+				#body.add_energy(emerald_energy, EmeraldRepository.EnergySource.Explosion)

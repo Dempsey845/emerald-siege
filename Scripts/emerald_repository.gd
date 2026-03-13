@@ -11,8 +11,11 @@ var can_regen := true
 
 var regen_speed := 10.0
 
-var can_absorb := true
+var can_absorb := false
 var absorb_amount := 35.0
+
+func _ready() -> void:
+	set_energy(randi_range(0, 100))
 
 func _on_interact_area_interacted() -> void:
 	print("Interacting with repo!")
@@ -46,6 +49,9 @@ func take_energy(amount: float):
 		
 	energy_changed.emit(energy)
 
+func set_energy(value: float):
+	energy = value
+	energy_changed.emit(value)
 
 func _on_regen_delay_timer_timeout() -> void:
 	can_regen = true
